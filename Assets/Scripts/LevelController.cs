@@ -13,31 +13,47 @@ public class LevelController : MonoBehaviour
     private bool playerHasMoved = false;
     private bool textIsFinished = false;
 
+    public void NextMap()
+    {
+        Reset();
+        StartCoroutine(FadeInStoryText());
+    }
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         headerImage = storyCanvas.GetComponentInChildren<Image>();
         headerText = storyCanvas.GetComponentInChildren<Text>();
-        headerText.text = "";
-        storyCanvas.enabled = headerImage.enabled = headerText.enabled = false;
-
-        StartCoroutine(FadeIn());
+        Reset();
     }
 
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            playerHasMoved = true;
-        }
+        UpdatePlayerHasMoved();
 
         if (playerHasMoved && textIsFinished)
         {
-            StartCoroutine(FadeOut());
+            StartCoroutine(FadeOutStoryText());
         }
     }
 
-    IEnumerator ShowText()
+    private void Reset()
+    {
+        headerText.text = "";
+        storyCanvas.enabled = headerImage.enabled = headerText.enabled = false;
+        textIsFinished = false;
+        playerHasMoved = false;
+    }
+
+    private void UpdatePlayerHasMoved()
+    {
+        if (!playerHasMoved && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow)))
+        {
+            playerHasMoved = true;
+        }
+    }
+
+    private IEnumerator ShowText()
     {
         for (int i = 1; i <= storyText.Length; i++)
         {
@@ -54,7 +70,19 @@ public class LevelController : MonoBehaviour
         textIsFinished = true;
     }
 
-    private IEnumerator FadeIn()
+    private float getDelay(int i)
+    {
+        if (i == storyText.Length)
+        {
+            return 4;
+        }
+        else
+        {
+            return storyText.Substring(i - 1, 1).IndexOfAny(new char[] { '?', '!', '.', ',' }) != -1 ? 1 : typeWriterDelay;
+        }
+    }
+
+    private IEnumerator FadeInStoryText()
     {
         storyCanvas.enabled = headerImage.enabled = headerText.enabled = true;
 
@@ -69,7 +97,7 @@ public class LevelController : MonoBehaviour
         StartCoroutine(ShowText());
     }
 
-    private IEnumerator FadeOut()
+    private IEnumerator FadeOutStoryText()
     {
         for (float i = 1f; i >= 0; i -= Time.deltaTime)
         {
@@ -78,17 +106,5 @@ public class LevelController : MonoBehaviour
             yield return null;
         }
         storyCanvas.enabled = false;
-    }
-
-    private float getDelay(int i)
-    {
-        if (i == storyText.Length)
-        {
-            return 4;
-        }
-        else
-        {
-            return storyText.Substring(i - 1, 1).IndexOfAny(new char[] { '?', '!', '.', ',' }) != -1 ? 1 : typeWriterDelay;
-        }
     }
 }
