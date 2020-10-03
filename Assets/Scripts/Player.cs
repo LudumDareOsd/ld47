@@ -8,7 +8,8 @@ public class Player : MonoBehaviour
     public PlayerSfx playerSfx;
     public LayerMask mask;
     private Rigidbody2D body;
-    private BoxCollider2D boxCollider;
+    //private BoxCollider2D boxCollider;
+    private CircleCollider2D boxCollider;
     private float speed = 50f;
     private float maxSpeed = 5f;
     private float jumpSpeed = 15f;
@@ -16,7 +17,8 @@ public class Player : MonoBehaviour
     void Awake()
     {
         body = gameObject.GetComponent<Rigidbody2D>();
-        boxCollider = gameObject.GetComponent<BoxCollider2D>();
+        //boxCollider = gameObject.GetComponent<BoxCollider2D>();
+        boxCollider = gameObject.GetComponent<CircleCollider2D>();
     }
 
     void Update()
