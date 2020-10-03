@@ -5,31 +5,39 @@ using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
+    public Animator animator;
     public PlayerSfx playerSfx;
-    public LayerMask mask;
     private Rigidbody2D body;
     private BoxCollider2D boxCollider;
-    private SpriteRenderer sr;
+    private Transform render;
     private float speed = 40f;
     private float maxSpeed = 5f;
     private float jumpSpeed = 16f;
+    private bool isGrounded = true;
+    private int platformMask;
+    private int boxMask;
 
     void Awake()
     {
-        sr = GetComponent<SpriteRenderer>();
         body = gameObject.GetComponent<Rigidbody2D>();
         boxCollider = gameObject.GetComponent<BoxCollider2D>();
+        platformMask = LayerMask.GetMask("Platform", "Box");
+        boxMask = LayerMask.GetMask("Box");
+        render = transform.GetChild(0).transform;
     }
 
     void Update()
     {
         var grounded = IsGrounded();
-
-        if (grounded) {
+        if (!isGrounded && grounded)
+        {
+                playerSfx.PlayLandSound();
+        }
+        isGrounded = grounded;
+        if (isGrounded) {
             if (Input.GetKey(KeyCode.UpArrow))
             {
                 body.velocity = new Vector2(body.velocity.x, jumpSpeed);
-                playerSfx.PlayJumpSound();
             }
         }
 
@@ -49,6 +57,20 @@ public class Player : MonoBehaviour
         {
             playerSfx.PlayWalk();
         }
+
+        var spd = Mathf.Abs(body.velocity.x);
+
+        animator.SetFloat("speed", spd);
+
+        animator.SetFloat("speedy", body.velocity.y);
+
+        if (IsPushing() && spd > 0.01f) {
+            animator.SetBool("pushing", true);
+            render.localPosition = new Vector2(-0.6f, 0f);
+        } else {
+            animator.SetBool("pushing", false);
+            render.localPosition = new Vector2(0f, 0f);
+        }
     }
 
     private void MaxSpeed()
@@ -66,7 +88,7 @@ public class Player : MonoBehaviour
         {
             var inAirSpeed = speed.x * 0.1f;
 
-            if (speed.x > inAirSpeed)
+            if (speed.x >= inAirSpeed)
             {
                 speed = new Vector2(inAirSpeed, speed.y);
             }
@@ -94,15 +116,24 @@ public class Player : MonoBehaviour
         return speed;
     }
 
+    private bool IsPushing() {
+
+        var hit = Physics2D.Raycast(transform.position, transform.right, 0.5f, boxMask);
+
+        Debug.DrawRay(transform.position, transform.right);
+
+        return hit.collider != null;
+    }
+
     private bool IsGrounded() {
-        var hit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, mask);
+        var hit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, platformMask);
 
         return hit.collider != null;
     }
 
     public bool IsWalking() {
         if (body.velocity.x > 0.1f || body.velocity.x < -0.1f) {
-            return true;
+            return isGrounded;
         }
 
         return false;
