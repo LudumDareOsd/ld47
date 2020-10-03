@@ -9,12 +9,15 @@ public class Lever : Trigger
     public Sprite inActiveSprite;
 
     private SpriteRenderer sr;
+    public LeverSfx leverSfx;
     public void Awake() {
         sr = GetComponent<SpriteRenderer>();
+        sr.sprite = active ? activeSprite : inActiveSprite;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        leverSfx.PlayPullLever();
         if (active)
         {
             active = false;
@@ -22,16 +25,15 @@ public class Lever : Trigger
         else {
             active = true;
         }
-        
-        Eval();
     }
 
+    protected override void onActivate()
+    {
+        sr.sprite = activeSprite;
+    }
 
-    private void Eval() {
-        if (active) {
-            sr.sprite = activeSprite;
-        } else {
-            sr.sprite = inActiveSprite;
-        }
+    protected override void onInActivate()
+    {
+        sr.sprite = inActiveSprite;
     }
 }

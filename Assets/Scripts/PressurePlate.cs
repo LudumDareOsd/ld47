@@ -40,12 +40,15 @@ public class PressurePlate : Trigger
         else {
             active = false;
         }
+    }
 
-        if (active)
-        {
-            sr.sprite = activeSprite;
-        } else {
-            sr.sprite = inactiveSprite;
-        }
+    protected override void onActivate()
+    {
+        sr.sprite = activeSprite;
+    }
+
+    protected override void onInActivate()
+    {
+        sr.sprite = inactiveSprite;
     }
 }

@@ -28,13 +28,24 @@ namespace Assets.Scripts
         {
             if (count >= 1 && numberOfHits >= 2) {
                 active = true;
-                sr.sprite = activeSprite;
-            } else if (count >= 1 && numberOfHits >= 1) {
+            } else { 
+                active = false;
+            }
+        }
+        protected override void onActivate()
+        {
+            sr.sprite = activeSprite;
+        }
+
+        protected override void onInActivate()
+        {
+            if (count >= 1 && numberOfHits >= 1)
+            {
                 sr.sprite = interSprite;
-                active = false;
-            } else {
+            }
+            else
+            {
                 sr.sprite = inactiveSprite;
-                active = false;
             }
         }
     }
