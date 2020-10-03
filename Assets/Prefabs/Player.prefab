@@ -267,7 +267,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f1711f5ca8893d24796f6ba43ed41c49, type: 3}
   - {fileID: 8300000, guid: 1a6e6c2bf84b35840b084c2a69d5b635, type: 3}
   - {fileID: 8300000, guid: 5e43eb5685a9ec44cbaab9eb137c892b, type: 3}
-  shoveBoxClip: {fileID: 8300000, guid: 03e13cb87d3d8fc41ac18ba918f708f3, type: 3}
-  jumpClip: {fileID: 8300000, guid: 41ab5565474c0234d8eeb8f270a858db, type: 3}
+  shoveClips:
+  - {fileID: 8300000, guid: 9591fedac474a5c49a6e0ff757be9a55, type: 3}
+  - {fileID: 8300000, guid: fb223b535be4021439f77ba108a05b99, type: 3}
+  landClip: {fileID: 8300000, guid: 41ab5565474c0234d8eeb8f270a858db, type: 3}
   volume: 0.5
   timeBetweenMovement: 0.5

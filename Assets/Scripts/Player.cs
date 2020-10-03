@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
         var grounded = IsGrounded();
         if (!isGrounded && grounded)
         {
-                playerSfx.PlayJumpSound();
+                playerSfx.PlayLandSound();
         }
         isGrounded = grounded;
         if (isGrounded) {
