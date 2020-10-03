@@ -237,6 +237,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: -4752223992856184159}
-  activeClip: {fileID: 8300000, guid: 68aed46e60f30824bb8d6a9e778c8e8e, type: 3}
-  interClip: {fileID: 8300000, guid: 68aed46e60f30824bb8d6a9e778c8e8e, type: 3}
+  activeClip: {fileID: 8300000, guid: dcd0c083c36e5a34bb86f688e4cd68b8, type: 3}
+  interClip: {fileID: 8300000, guid: eaac997d1de73ec4aa723d88cd1f8ec2, type: 3}
   inactiveClip: {fileID: 8300000, guid: 68aed46e60f30824bb8d6a9e778c8e8e, type: 3}
