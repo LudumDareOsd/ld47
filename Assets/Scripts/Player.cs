@@ -11,13 +11,13 @@ public class Player : MonoBehaviour
     private float speed = 50f;
     private float maxSpeed = 5f;
     private float jumpSpeed = 15f;
+
     void Awake()
     {
         body = gameObject.GetComponent<Rigidbody2D>();
         boxCollider = gameObject.GetComponent<BoxCollider2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         var grounded = IsGrounded();
@@ -81,21 +81,17 @@ public class Player : MonoBehaviour
         return speed;
     }
 
-    private Vector2 Walk(Vector2 speed, bool grounded) {
-        if (!grounded) {
-            var inAirSpeed = speed.x * 0.1f;
-
-            if(speed.x < inAirSpeed) {
-                speed = new Vector2(inAirSpeed, speed.y);
-            }
-        }
-
-        return speed;
-    }
-
     private bool IsGrounded() {
         var hit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, mask);
 
         return hit.collider != null;
+    }
+
+    public bool IsWalking() {
+        if (body.velocity.x > 0.1f || body.velocity.x < -0.1f) {
+            return true;
+        }
+
+        return false;
     }
 }
