@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 1104b462c504fee48b502d36dee37919
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - leverPullAudioSource: {instanceID: 0}
+  - leverPullClip: {fileID: 8300000, guid: 3bd8d80518e50f84b81726d1d3aa796d, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
