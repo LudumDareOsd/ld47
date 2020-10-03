@@ -8,8 +8,9 @@ public class Player : MonoBehaviour
     public LayerMask mask;
     private Rigidbody2D body;
     private BoxCollider2D boxCollider;
-    private float speed = 15f;
-    private float jumpSpeed = 33f;
+    private float speed = 50f;
+    private float maxSpeed = 5f;
+    private float jumpSpeed = 15f;
     void Awake()
     {
         body = gameObject.GetComponent<Rigidbody2D>();
@@ -27,23 +28,66 @@ public class Player : MonoBehaviour
                 body.velocity = new Vector2(body.velocity.x, jumpSpeed);
             }
         }
-        
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            body.velocity = Walk(new Vector2(speed, body.velocity.y), grounded);
+            body.AddForce(Right(new Vector2(speed, 0), grounded));
         }
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            body.velocity = Walk(new Vector2(-speed, body.velocity.y), grounded);
+            body.AddForce(Left(new Vector2(-speed, 0), grounded));
+        }
+
+        MaxSpeed();
+    }
+
+    private void MaxSpeed()
+    {
+        if (body.velocity.x > maxSpeed)
+        {
+            body.velocity = new Vector2(maxSpeed, body.velocity.y);
+        } else if(body.velocity.x < -maxSpeed) {
+            body.velocity = new Vector2(-maxSpeed, body.velocity.y);
         }
     }
 
-    private Vector2 Walk(Vector2 speed, bool grounded) {
+    private Vector2 Right(Vector2 speed, bool grounded) {
+        if (!grounded)
+        {
+            var inAirSpeed = speed.x * 0.1f;
 
+            if (speed.x > inAirSpeed)
+            {
+                speed = new Vector2(inAirSpeed, speed.y);
+            }
+        }
+
+        return speed;
+    }
+
+    private Vector2 Left(Vector2 speed, bool grounded)
+    {
+        if (!grounded)
+        {
+            var inAirSpeed = speed.x * 0.1f;
+
+            if (speed.x < inAirSpeed)
+            {
+                speed = new Vector2(inAirSpeed, speed.y);
+            }
+        }
+
+        return speed;
+    }
+
+    private Vector2 Walk(Vector2 speed, bool grounded) {
         if (!grounded) {
-            speed = new Vector2(speed.x * 0.5f, speed.y);
+            var inAirSpeed = speed.x * 0.1f;
+
+            if(speed.x < inAirSpeed) {
+                speed = new Vector2(inAirSpeed, speed.y);
+            }
         }
 
         return speed;
