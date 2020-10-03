@@ -10,15 +10,15 @@ namespace Assets.Scripts
 
         public void Update()
         {
-            var hits1 = Physics2D.RaycastAll(transform.position + new Vector3(-0.25f, 0.2f, 0), Vector2.up, 2f).Select(it => it.collider).ToList();
-            var hits2 = Physics2D.RaycastAll(transform.position + new Vector3(0.25f, 0.2f, 0), Vector2.up, 2f).Select(it => it.collider).ToList();
+            var hits = Physics2D.RaycastAll(transform.position + new Vector3(0, 0.2f, 0), Vector2.up, 1.5f).Select(it => it.collider).ToList();
+            // var hits2 = Physics2D.RaycastAll(transform.position + new Vector3(0.25f, 0.2f, 0), Vector2.up, 2f).Select(it => it.collider).ToList();
 
-            var hits = hits1.Union(hits2).ToList();
+            // var hits = hits1.Union(hits2).ToList();
 
             numberOfHits = hits.Count;
 
-            Debug.DrawRay(transform.position + new Vector3(-0.25f, 0.2f, 0), Vector2.up * 2f, Color.green);
-            Debug.DrawRay(transform.position + new Vector3(0.25f, 0.2f, 0), Vector2.up * 2f, Color.green);
+            Debug.DrawRay(transform.position + new Vector3(0, 0.2f, 0), Vector2.up * 1.5f, Color.green);
+            //Debug.DrawRay(transform.position + new Vector3(0.25f, 0.2f, 0), Vector2.up * 2f, Color.green);
 
             Eval();
         }

@@ -42,6 +42,7 @@ public class Player : MonoBehaviour
         }
 
         MaxSpeed();
+
         if (IsWalking())
         {
             playerSfx.PlayWalk();
