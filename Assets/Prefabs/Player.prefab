@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7673400290702432260}
   - component: {fileID: 7673400290702432261}
   - component: {fileID: 4236169270538766863}
-  - component: {fileID: 7673400290702432262}
   - component: {fileID: 3433818752156118809}
   - component: {fileID: 5597459967871810151}
   m_Layer: 0
@@ -49,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d34a25ce6f25674f87f12eb69975fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSfx: {fileID: 0}
+  playerSfx: {fileID: 5597459967871810151}
   mask:
     serializedVersion: 2
     m_Bits: 256
