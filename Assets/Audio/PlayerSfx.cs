@@ -2,6 +2,7 @@
 
 public class PlayerSfx : MonoBehaviour
 {
+    public Player player;
     public AudioSource audioSource;
     public AudioClip[] audioClipArray;
     public float volume = 0.5f;
@@ -13,7 +14,7 @@ public class PlayerSfx : MonoBehaviour
     void Update()
     {
         stepTimer += Time.deltaTime;
-        if (stepTimer > timeBetweenSteps)
+        if (stepTimer > timeBetweenSteps && player.IsWalking())
         {
             audioSource.pitch = leftLeg ? 0.75f : 0.95f;
             audioSource.PlayOneShot(RandomClip(), volume);
