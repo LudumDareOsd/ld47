@@ -3,12 +3,12 @@
 public class PlayerSfx : MonoBehaviour
 {
     public AudioSource audioSource;
-    public AudioClip[] audioClipArray;
+    public AudioClip[] stepClips;
     public AudioClip shoveBoxClip;
     public AudioClip jumpClip;
     public float volume = 0.5f;
     int nextStepClip = 0;
-    public float timeBetweenMovement = 0.75f;
+    public float timeBetweenMovement = 0.5f;
     float movementTimer;
     bool leftLeg = false;
     public void PlayWalk()
@@ -18,7 +18,7 @@ public class PlayerSfx : MonoBehaviour
         {
             audioSource.pitch = leftLeg ? 0.75f : 0.95f;
             audioSource.PlayOneShot(RandomClip(), volume);
-            nextStepClip = nextStepClip < audioClipArray.Length - 1 ? nextStepClip + 1 : 0;
+            nextStepClip = nextStepClip < stepClips.Length - 1 ? nextStepClip + 1 : 0;
             movementTimer = 0;
             leftLeg = !leftLeg;
         }
@@ -30,23 +30,17 @@ public class PlayerSfx : MonoBehaviour
         {
             audioSource.pitch = leftLeg ? 0.75f : 0.95f;
             audioSource.PlayOneShot(shoveBoxClip, volume);
-            nextStepClip = nextStepClip < audioClipArray.Length - 1 ? nextStepClip + 1 : 0;
+            nextStepClip = nextStepClip < stepClips.Length - 1 ? nextStepClip + 1 : 0;
             movementTimer = 0;
             leftLeg = !leftLeg;
         }
     }
     public void PlayJumpSound()
     {
-        if (audioSource.isPlaying)
-        {
-            audioSource.Stop();
-        }
-        audioSource.clip = jumpClip;
-        audioSource.volume = volume / 2;
-        audioSource.Play();
+        audioSource.PlayOneShot(jumpClip, volume);
     }
     AudioClip RandomClip()
     {
-        return audioClipArray[Random.Range(0, audioClipArray.Length - 1)];
+        return stepClips[Random.Range(0, stepClips.Length - 1)];
     }
 }

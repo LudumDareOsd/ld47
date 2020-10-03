@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class Door : Reciver
@@ -9,19 +10,22 @@ public class Door : Reciver
     public Sprite inActiveSprite;
 
     private SpriteRenderer sr;
-
+    public EnvironmentSfx environmentSfx;
     public void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
+        sr.sprite = IsActive() ? activeSprite : inActiveSprite;
     }
 
-    public void Update()
+    protected override void onActivated()
     {
-        if (IsActive()) {
-            sr.sprite = activeSprite;
-        }
-        else {
-            sr.sprite = inActiveSprite;
-        }
+        sr.sprite = activeSprite;
+        environmentSfx.PlayOpenDoor();
+    }
+
+    protected override void onDeActivated()
+    {
+        sr.sprite = inActiveSprite;
+        environmentSfx.PlayCloseDoor();
     }
 }

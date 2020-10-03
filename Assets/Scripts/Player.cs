@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     private float speed = 50f;
     private float maxSpeed = 5f;
     private float jumpSpeed = 15f;
+    private bool isGrounded = true;
 
     void Awake()
     {
@@ -22,12 +23,15 @@ public class Player : MonoBehaviour
     void Update()
     {
         var grounded = IsGrounded();
-
-        if (grounded) {
+        if (!isGrounded && grounded)
+        {
+                playerSfx.PlayJumpSound();
+        }
+        isGrounded = grounded;
+        if (isGrounded) {
             if (Input.GetKey(KeyCode.UpArrow))
             {
                 body.velocity = new Vector2(body.velocity.x, jumpSpeed);
-                playerSfx.PlayJumpSound();
             }
         }
 
@@ -95,7 +99,7 @@ public class Player : MonoBehaviour
 
     public bool IsWalking() {
         if (body.velocity.x > 0.1f || body.velocity.x < -0.1f) {
-            return true;
+            return isGrounded;
         }
 
         return false;
