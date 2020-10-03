@@ -1,32 +1,82 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LevelController : MonoBehaviour
 {
-    public Text storyTextObject;
     public Canvas storyCanvas;
     public float typeWriterDelay = 0.1f;
     public string storyText = "";
-    private string currentText;
+
+    private Image headerImage;
+    private Text headerText;
+    private bool playerHasMoved = false;
+    private bool textIsFinished = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(ShowText());
+        headerImage = storyCanvas.GetComponentInChildren<Image>();
+        headerText = storyCanvas.GetComponentInChildren<Text>();
+        headerText.text = "";
+        storyCanvas.enabled = headerImage.enabled = headerText.enabled = false;
+
+        StartCoroutine(FadeIn());
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            playerHasMoved = true;
+        }
+
+        if (playerHasMoved && textIsFinished)
+        {
+            StartCoroutine(FadeOut());
+        }
     }
 
     IEnumerator ShowText()
     {
         for (int i = 1; i <= storyText.Length; i++)
         {
-            currentText = storyText.Substring(0, i);
-            storyTextObject.text = currentText;
-
-            yield return new WaitForSeconds(getDelay(i));
+            headerText.text = storyText.Substring(0, i);
+            
+            if (i != storyText.Length) {
+                yield return new WaitForSeconds(getDelay(i));
+            } else
+            {
+                yield return null;
+            }
         }
 
+        textIsFinished = true;
+    }
+
+    private IEnumerator FadeIn()
+    {
+        storyCanvas.enabled = headerImage.enabled = headerText.enabled = true;
+
+        for (float i = 0f; i <= 1; i += Time.deltaTime)
+        {
+            headerImage.color = new Color(1, 1, 1, i);
+            headerText.color = new Color(255, 255, 255, i);
+
+            yield return null;
+        }
+
+        StartCoroutine(ShowText());
+    }
+
+    private IEnumerator FadeOut()
+    {
+        for (float i = 1f; i >= 0; i -= Time.deltaTime)
+        {
+            headerImage.color = new Color(1, 1, 1, i);
+            headerText.color = new Color(255, 255, 255, i);
+            yield return null;
+        }
         storyCanvas.enabled = false;
     }
 
