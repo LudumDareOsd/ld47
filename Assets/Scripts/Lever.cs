@@ -20,20 +20,12 @@ public class Lever : Trigger
         leverSfx.PlayPullLever();
         if (active)
         {
+            sr.sprite = activeSprite;
             active = false;
         }
         else {
+            sr.sprite = inActiveSprite;
             active = true;
         }
-    }
-
-    protected override void onActivate()
-    {
-        sr.sprite = activeSprite;
-    }
-
-    protected override void onInActivate()
-    {
-        sr.sprite = inActiveSprite;
     }
 }

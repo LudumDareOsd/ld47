@@ -6,15 +6,15 @@ namespace Assets.Scripts
 {
     public class PressurePlateHeavy : PressurePlate
     {
+        private int prevNumberOfHits = 0;
         private int numberOfHits = 0;
-
         public void Update()
         {
             var hits = Physics2D.RaycastAll(transform.position + new Vector3(0, 0.2f, 0), Vector2.up, 1.5f).Select(it => it.collider).ToList();
             // var hits2 = Physics2D.RaycastAll(transform.position + new Vector3(0.25f, 0.2f, 0), Vector2.up, 2f).Select(it => it.collider).ToList();
 
             // var hits = hits1.Union(hits2).ToList();
-
+            prevNumberOfHits = numberOfHits;
             numberOfHits = hits.Count;
 
             Debug.DrawRay(transform.position + new Vector3(0, 0.2f, 0), Vector2.up * 1.5f, Color.green);
@@ -22,31 +22,50 @@ namespace Assets.Scripts
 
             Eval();
         }
-
-        override
-        protected void Eval()
+        protected override bool IsActive()
         {
-            if (count >= 1 && numberOfHits >= 2) {
-                active = true;
-            } else { 
-                active = false;
-            }
+            return count >= 1 && numberOfHits >= 2;
         }
-        protected override void onActivate()
+        protected override Sprite GetSprite()
         {
-            sr.sprite = activeSprite;
-        }
-
-        protected override void onInActivate()
-        {
-            if (count >= 1 && numberOfHits >= 1)
+            if (active)
             {
-                sr.sprite = interSprite;
+                return activeSprite;
+            }
+            else if (numberOfHits >= 1)
+            {
+                return interSprite;
             }
             else
             {
-                sr.sprite = inactiveSprite;
+                return inactiveSprite;
             }
         }
+        override
+        protected void Eval()
+        {
+            var wasActive = active;
+            active = IsActive();
+            if (active) {
+                if (wasActive != active)
+                {
+                    Activate();
+                }
+            } else if (numberOfHits >= 1) {
+                if (prevNumberOfHits != numberOfHits)
+                {
+                    sr.sprite = interSprite;
+                    plateSfx.PlayInterSound();
+
+                }
+                
+            } else {
+                if (prevNumberOfHits != numberOfHits)
+                {
+                    InActivate();
+                }
+            }
+        }
+
     }
 }

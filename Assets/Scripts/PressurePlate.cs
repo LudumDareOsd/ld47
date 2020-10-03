@@ -9,14 +9,15 @@ public class PressurePlate : Trigger
     public Sprite activeSprite;
     public Sprite interSprite;
     public Sprite inactiveSprite;
-
+    public PressurePlateSfx plateSfx;
     protected int count = 0;
     protected SpriteRenderer sr;
     
     public void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
-        Eval();
+        active = IsActive();
+        sr.sprite = GetSprite();
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -32,23 +33,37 @@ public class PressurePlate : Trigger
     }
 
     virtual protected void Eval() {
-
-        if (count >= 1)
+        var wasActive = active;
+        active = IsActive();
+        if (wasActive != active)
         {
-            active = true;
-        }
-        else {
-            active = false;
+            if (active)
+            {
+                Activate();
+            }
+            else 
+            {
+                InActivate();
+            }
         }
     }
-
-    protected override void onActivate()
+    virtual protected bool IsActive()
     {
+        return count >= 1;
+    }
+    virtual protected Sprite GetSprite()
+    {
+        return active ? activeSprite : inactiveSprite;
+    }
+    protected void Activate()
+    {
+        plateSfx.PlayActiveSound();
         sr.sprite = activeSprite;
     }
 
-    protected override void onInActivate()
+    protected void InActivate()
     {
+        plateSfx.PlayInactiveSound();
         sr.sprite = inactiveSprite;
     }
 }
