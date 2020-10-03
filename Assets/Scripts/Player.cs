@@ -98,4 +98,12 @@ public class Player : MonoBehaviour
 
         return hit.collider != null;
     }
+
+    private bool IsWalking() {
+        if (body.velocity.x > 0.1f || body.velocity.x < -0.1f) {
+            return true;
+        }
+
+        return false;
+    }
 }
