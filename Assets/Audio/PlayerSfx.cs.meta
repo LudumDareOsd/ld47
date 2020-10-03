@@ -3,7 +3,10 @@ guid: 094bcf6462753e045aaf19b865ae6b6a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - audioSource: {instanceID: 0}
+  - shoveBoxClip: {fileID: 8300000, guid: 03e13cb87d3d8fc41ac18ba918f708f3, type: 3}
+  - jumpClip: {fileID: 8300000, guid: 79286784e8ef7f247904ea13db665841, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

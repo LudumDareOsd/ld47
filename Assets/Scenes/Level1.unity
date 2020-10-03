@@ -781,7 +781,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 094bcf6462753e045aaf19b865ae6b6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1817570497}
   audioSource: {fileID: 930560711}
   audioClipArray:
   - {fileID: 8300000, guid: 922d52514bf90f34993d0ef2aeb29e13, type: 3}
@@ -792,20 +791,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f1711f5ca8893d24796f6ba43ed41c49, type: 3}
   - {fileID: 8300000, guid: 1a6e6c2bf84b35840b084c2a69d5b635, type: 3}
   - {fileID: 8300000, guid: 5e43eb5685a9ec44cbaab9eb137c892b, type: 3}
+  shoveBoxClip: {fileID: 8300000, guid: 03e13cb87d3d8fc41ac18ba918f708f3, type: 3}
+  jumpClip: {fileID: 8300000, guid: 79286784e8ef7f247904ea13db665841, type: 3}
   volume: 0.5
-  timeBetweenSteps: 0.5
---- !u!114 &1817570497 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7673400290702432259, guid: b3bf721c99389834f86dff1051360bb7,
-    type: 3}
-  m_PrefabInstance: {fileID: 2145874820}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1817570492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d34a25ce6f25674f87f12eb69975fc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  timeBetweenMovement: 0.75
 --- !u!1 &1845001470
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,6 +1085,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7673400290702432259, guid: b3bf721c99389834f86dff1051360bb7,
+        type: 3}
+      propertyPath: playerSfx
+      value: 
+      objectReference: {fileID: 1817570493}
     - target: {fileID: 7673400290702432260, guid: b3bf721c99389834f86dff1051360bb7,
         type: 3}
       propertyPath: m_AngularDrag
