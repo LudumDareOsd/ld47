@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
+    public PlayerSfx playerSfx;
     public LayerMask mask;
     private Rigidbody2D body;
     private BoxCollider2D boxCollider;
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
             if (Input.GetKey(KeyCode.UpArrow))
             {
                 body.velocity = new Vector2(body.velocity.x, jumpSpeed);
+                playerSfx.PlayJumpSound();
             }
         }
 
@@ -40,6 +42,10 @@ public class Player : MonoBehaviour
         }
 
         MaxSpeed();
+        if (IsWalking())
+        {
+            playerSfx.PlayWalk();
+        }
     }
 
     private void MaxSpeed()
