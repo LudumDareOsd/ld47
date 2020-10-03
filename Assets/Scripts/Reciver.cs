@@ -1,26 +1,35 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Assets.Scripts
 {
-    public class Reciver : MonoBehaviour
+    public abstract class Reciver : MonoBehaviour
     {
         public List<Trigger> triggers = new List<Trigger>();
-
-        protected bool IsActive() {
-
-            var active = true;
-
-            foreach(var trigger in triggers)
+        private bool isActive;
+        protected abstract void onActivated();
+        protected abstract void onDeActivated();
+        protected bool IsActive()
+        {
+            return triggers.All(trigger => trigger.active);
+        }
+        public virtual void Update()
+        {
+            var active = IsActive();
+            if (active != isActive)
             {
-                if(!trigger.active)
+                if (active)
                 {
-                    active = false;
+                    onActivated();
+                }
+                else
+                {
+                    onDeActivated();
                 }
             }
-
-            return active;
+            isActive = active;
         }
     }
 }

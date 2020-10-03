@@ -10,9 +10,9 @@ public class PressurePlate : Trigger
     public Sprite interSprite;
     public Sprite inactiveSprite;
 
-    private SpriteRenderer sr;
-    private int count = 0;
-
+    protected int count = 0;
+    protected SpriteRenderer sr;
+    
     public void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -31,7 +31,7 @@ public class PressurePlate : Trigger
         Eval();
     }
 
-    private void Eval() {
+    virtual protected void Eval() {
 
         if (count >= 1)
         {
