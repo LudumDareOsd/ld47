@@ -9,12 +9,14 @@ public class Player : MonoBehaviour
     public LayerMask mask;
     private Rigidbody2D body;
     private BoxCollider2D boxCollider;
+    private SpriteRenderer sr;
     private float speed = 40f;
     private float maxSpeed = 5f;
     private float jumpSpeed = 16f;
 
     void Awake()
     {
+        sr = GetComponent<SpriteRenderer>();
         body = gameObject.GetComponent<Rigidbody2D>();
         boxCollider = gameObject.GetComponent<BoxCollider2D>();
     }
@@ -70,6 +72,8 @@ public class Player : MonoBehaviour
             }
         }
 
+        transform.localRotation = Quaternion.Euler(0, 0, 0);
+
         return speed;
     }
 
@@ -84,6 +88,8 @@ public class Player : MonoBehaviour
                 speed = new Vector2(inAirSpeed, speed.y);
             }
         }
+
+        transform.localRotation = Quaternion.Euler(0, 180, 0);
 
         return speed;
     }
