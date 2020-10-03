@@ -9,9 +9,9 @@ public class Player : MonoBehaviour
     public LayerMask mask;
     private Rigidbody2D body;
     private BoxCollider2D boxCollider;
-    private float speed = 50f;
+    private float speed = 40f;
     private float maxSpeed = 5f;
-    private float jumpSpeed = 15f;
+    private float jumpSpeed = 16f;
 
     void Awake()
     {

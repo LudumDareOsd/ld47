@@ -11,9 +11,7 @@ public class PressurePlate : Trigger
     public Sprite inactiveSprite;
 
     protected int count = 0;
-
-
-    private SpriteRenderer sr;
+    protected SpriteRenderer sr;
     
     public void Awake()
     {
@@ -33,7 +31,7 @@ public class PressurePlate : Trigger
         Eval();
     }
 
-    protected void Eval() {
+    virtual protected void Eval() {
 
         if (count >= 1)
         {
