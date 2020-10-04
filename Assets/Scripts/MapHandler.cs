@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using UnityEngine;
 using Assets.Scripts;
 
@@ -40,7 +38,7 @@ public class MapHandler : MonoBehaviour
 		var doors = new Dictionary<string, GameObject>();
 		var triggers = new List<KeyValuePair<string, GameObject>>();
 
-		Debug.LogFormat("Offsets: x:{0} y:{1}", xoffset, yoffset);
+		//Debug.LogFormat("Offsets: x:{0} y:{1}", xoffset, yoffset);
 		//Debug.LogFormat("Mapfolder: {0}", mapsPath);
 
 		for (var y = 0; y < map_height; y++)
@@ -80,13 +78,7 @@ public class MapHandler : MonoBehaviour
 						instance.transform.SetParent(worldObject.transform);
 						break;
 					}
-					case "W":
-					{
-						var instance = Instantiate(winPrefab, new Vector3(spawnx, spawny, 0), Quaternion.identity);
-						instance.transform.SetParent(worldObject.transform);
-						break;
-					}
-					case "B":
+					case "B": // Box
 					{
 						var instance = Instantiate(box1Prefab, new Vector3(spawnx, spawny, 0), Quaternion.identity);
 						instance.transform.SetParent(worldObject.transform);
@@ -115,7 +107,7 @@ public class MapHandler : MonoBehaviour
 					}
 					case "E": case "R": case "T": // Lever
 					{
-						var lever = Instantiate(leverPrefab, new Vector3(spawnx, spawny, 0), Quaternion.identity);
+						var lever = Instantiate(leverPrefab, new Vector3(spawnx, spawny + 0.75f, 0), Quaternion.identity);
 						lever.transform.SetParent(worldObject.transform);
 						var buttonelement = new KeyValuePair<string, GameObject>(variant, lever);
 						triggers.Add(buttonelement);
@@ -141,11 +133,11 @@ public class MapHandler : MonoBehaviour
 		{
 			foreach (var trigger in triggers)
 			{
-				Debug.LogFormat("have trigger Variant from {0} to {1}", trigger.Key, door.Key);
+				//Debug.LogFormat("have trigger Variant from {0} to {1}", trigger.Key, door.Key);
 				// Matching variants
 				if (trigger.Key == door.Key)
 				{
-					Debug.LogFormat("adding trigger {0}", trigger.Key, door.Key);
+					//Debug.LogFormat("adding trigger {0}", trigger.Key, door.Key);
 					door.Value.GetComponent<Door>().triggers.Add(trigger.Value.GetComponent<Trigger>());
 				}
 			}

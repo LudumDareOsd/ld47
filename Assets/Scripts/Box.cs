@@ -35,9 +35,8 @@ public class Box : MonoBehaviour
     }
     private bool IsGrounded()
     {
-        var hit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, platformMask);
-
-        return hit.collider != null;
+        int hits = Physics2D.RaycastAll(boxCollider.bounds.center, Vector2.down, 0.80f).Length;
+        return hits > 2;
     }
     private AudioClip RandomBoxClip()
     {

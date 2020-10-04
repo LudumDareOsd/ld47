@@ -9,10 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2286887327188815934}
-  - component: {fileID: -7696859523557091970}
   - component: {fileID: 7119515517128507818}
   m_Layer: 8
-  m_Name: Win
+  m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,18 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-7696859523557091970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5684431934163466725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2c272b01bc19ef469541b379f570413, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!60 &7119515517128507818
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -70,10 +57,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.5, y: 0.5}
-      - {x: -0.5, y: -0.5}
-      - {x: 0.5, y: -0.5}
-      - {x: 0.5, y: 0.5}
+    - - {x: -0.40810385, y: 0.07333884}
+      - {x: -0.40482178, y: -0.6115883}
+      - {x: -0.039384108, y: -0.62799835}
+      - {x: 0.37856573, y: -0.6148703}
+      - {x: 0.37985855, y: -0.01042816}
+      - {x: -0.041531324, y: 0.27354133}
 --- !u!1 &5865219782491386893
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,8 +131,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1623304859
-  m_SortingLayer: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: db23da0128bd9c34cbb9a9cd588ef377, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
