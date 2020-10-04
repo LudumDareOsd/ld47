@@ -550,6 +550,8 @@ MonoBehaviour:
     type: 3}
   leverPrefab: {fileID: 1518609235911069, guid: d56266a753765134185aadf25159f07a,
     type: 3}
+  deathFountainPrefab: {fileID: 4675934951851643483, guid: 4a18bc891f141e041b1efb4efccfd847,
+    type: 3}
   levelController: {fileID: 1781890725}
 --- !u!4 &1771147140
 Transform:

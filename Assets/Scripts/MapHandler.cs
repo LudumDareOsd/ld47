@@ -24,6 +24,7 @@ public class MapHandler : MonoBehaviour
 	public GameObject pressurePrefab;
 	public GameObject heavyPressurePrefab;
 	public GameObject leverPrefab;
+	public GameObject deathFountainPrefab;
 
 	public const int map_width = 39;
 	public const int map_height = 21;
@@ -175,6 +176,12 @@ public class MapHandler : MonoBehaviour
 						doors.Add(levelData[y, x], door);
 						break;
 					}
+					case "!":
+                    {
+						var deatFountain = Instantiate(deathFountainPrefab, new Vector3(spawnx, spawny + 1.5f, 0), Quaternion.identity);
+						deatFountain.transform.SetParent(worldObject.transform);
+						break;
+                    }
 					default:
 						Debug.LogFormat("Unhandled Level data: {0},  pos: {1},{2}", levelData[y, x], x, y);
 						break;
