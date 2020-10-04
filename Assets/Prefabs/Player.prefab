@@ -194,9 +194,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9591fedac474a5c49a6e0ff757be9a55, type: 3}
   - {fileID: 8300000, guid: fb223b535be4021439f77ba108a05b99, type: 3}
   landClip: {fileID: 8300000, guid: 41ab5565474c0234d8eeb8f270a858db, type: 3}
-  landVolume: 0.5
-  walkVolume: 0.15
-  shoveVolume: 0.25
+  landVolume: 0.15
+  walkVolume: 0.1
+  shoveVolume: 0.05
   timeBetweenMovement: 0.5
 --- !u!61 &1602017048602592437
 BoxCollider2D:
