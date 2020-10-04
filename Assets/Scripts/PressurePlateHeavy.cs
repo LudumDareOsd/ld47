@@ -17,22 +17,26 @@ namespace Assets.Scripts
             prevNumberOfHits = numberOfHits;
             numberOfHits = hits.Count;
 
+            Debug.Log(numberOfHits);
+
             Debug.DrawRay(transform.position + new Vector3(0, 0.2f, 0), Vector2.up * 1.5f, Color.green);
             //Debug.DrawRay(transform.position + new Vector3(0.25f, 0.2f, 0), Vector2.up * 2f, Color.green);
 
             Eval();
         }
+
         protected override bool IsActive()
         {
-            return count >= 1 && numberOfHits >= 2;
+            return count >= 1 && numberOfHits >= 4;
         }
+
         protected override Sprite GetSprite()
         {
             if (active)
             {
                 return activeSprite;
             }
-            else if (numberOfHits >= 1)
+            else if (numberOfHits >= 2)
             {
                 return interSprite;
             }
@@ -41,6 +45,7 @@ namespace Assets.Scripts
                 return inactiveSprite;
             }
         }
+
         override
         protected void Eval()
         {
@@ -51,7 +56,7 @@ namespace Assets.Scripts
                 {
                     Activate();
                 }
-            } else if (numberOfHits >= 1) {
+            } else if (numberOfHits >= 2) {
                 if (prevNumberOfHits != numberOfHits)
                 {
                     sr.sprite = interSprite;
@@ -66,6 +71,5 @@ namespace Assets.Scripts
                 }
             }
         }
-
     }
 }
