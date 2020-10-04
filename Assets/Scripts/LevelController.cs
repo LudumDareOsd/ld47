@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
 {
     public Canvas storyCanvas;
     public float typeWriterDelay = 0.1f;
     public string storyText = "";
+	public GameObject mapHandler;
 
+	private int currentMap = 0;
     private Image headerImage;
     private Text headerText;
     private bool playerHasMoved = false;
@@ -15,6 +18,10 @@ public class LevelController : MonoBehaviour
 
     public void NextMap()
     {
+		// Reload Scene - make this not reload LevelController
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		// Load next map
+		mapHandler.GetComponent<MapHandler>().LoadMap(++currentMap);
         Reset();
         StartCoroutine(FadeInStoryText());
     }
@@ -24,10 +31,13 @@ public class LevelController : MonoBehaviour
     {
         headerImage = storyCanvas.GetComponentInChildren<Image>();
         headerText = storyCanvas.GetComponentInChildren<Text>();
-        Reset();
-    }
+		// Load next map
+		mapHandler.GetComponent<MapHandler>().LoadMap(++currentMap);
+		Reset();
+		StartCoroutine(FadeInStoryText());
+	}
 
-    private void Update()
+	private void Update()
     {
         UpdatePlayerHasMoved();
 
