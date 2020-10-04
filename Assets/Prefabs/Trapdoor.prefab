@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1192308694394577227
+--- !u!1 &2569587688806339948
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,27 +8,27 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 18441945684405408}
-  - component: {fileID: 6506566841131659242}
-  - component: {fileID: 396400192050541053}
-  - component: {fileID: 8576746775287265592}
-  - component: {fileID: 261254601476941101}
-  - component: {fileID: 702755813059991820}
-  - component: {fileID: 1362933321697463426}
-  m_Layer: 9
-  m_Name: Box1
+  - component: {fileID: 4831968507789825421}
+  - component: {fileID: 8268649827817473255}
+  - component: {fileID: 8834298443764122458}
+  - component: {fileID: 7037427451646825810}
+  - component: {fileID: 8693472501759193193}
+  - component: {fileID: 1290088196334516426}
+  - component: {fileID: 4007625336335748122}
+  m_Layer: 0
+  m_Name: Trapdoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &18441945684405408
+--- !u!4 &4831968507789825421
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1192308694394577227}
+  m_GameObject: {fileID: 2569587688806339948}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -36,13 +36,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6506566841131659242
+--- !u!212 &8268649827817473255
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1192308694394577227}
+  m_GameObject: {fileID: 2569587688806339948}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -72,48 +72,48 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 796465921
-  m_SortingLayer: 3
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 214fa7de6b6c60d4b8e9656b1179c59e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a4f9fd3ed96b50e43ba27a13bfd7b4ef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.6, y: 1.6}
+  m_Size: {x: 2, y: 0.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &396400192050541053
+--- !u!50 &8834298443764122458
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1192308694394577227}
-  m_BodyType: 0
+  m_GameObject: {fileID: 2569587688806339948}
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 4
-  m_LinearDrag: 3
-  m_AngularDrag: 0
-  m_GravityScale: 3
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &8576746775287265592
+--- !u!61 &7037427451646825810
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1192308694394577227}
+  m_GameObject: {fileID: 2569587688806339948}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -124,22 +124,22 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5, y: 1.5}
-    newSize: {x: 1.6, y: 1.6}
+    oldSize: {x: 2, y: 0.25}
+    newSize: {x: 2, y: 0.25}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5}
+  m_Size: {x: 2, y: 0.25}
   m_EdgeRadius: 0
---- !u!82 &261254601476941101
+--- !u!82 &8693472501759193193
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1192308694394577227}
+  m_GameObject: {fileID: 2569587688806339948}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -229,37 +229,35 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &702755813059991820
+--- !u!114 &1290088196334516426
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1192308694394577227}
+  m_GameObject: {fileID: 2569587688806339948}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c9f71e218fa1c84389855d571495834, type: 3}
+  m_Script: {fileID: 11500000, guid: c41085e3e3ba13a46bae268140dd60ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxClips:
-  - {fileID: 8300000, guid: 4d28909593912ef479c4edae8c46286e, type: 3}
-  - {fileID: 8300000, guid: fa4f6b0b2bf217f49a893bf172bfe911, type: 3}
-  - {fileID: 8300000, guid: 1ed926cc39f89b1439f259f2ca25477d, type: 3}
-  - {fileID: 8300000, guid: 3546c3a60b160a84c958519e808c01aa, type: 3}
-  boxSource: {fileID: 261254601476941101}
---- !u!58 &1362933321697463426
-CircleCollider2D:
+  doorAudioSource: {fileID: 173510527803928159, guid: 193fceda677c8d74e98bbdeb273fb6ce,
+    type: 3}
+  openDoorClip: {fileID: 8300000, guid: 9d4aa8963869608459187a552cca4c7c, type: 3}
+  closeDoorClip: {fileID: 8300000, guid: f6a9b6d356d553a438612c85b7886cbe, type: 3}
+--- !u!114 &4007625336335748122
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1192308694394577227}
+  m_GameObject: {fileID: 2569587688806339948}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.77
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee1b0d08228fa9e40a43a138e966bcad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggers: []
+  activeSprite: {fileID: 21300000, guid: a4f9fd3ed96b50e43ba27a13bfd7b4ef, type: 3}
+  inActiveSprite: {fileID: 21300000, guid: 7406223f03cbecc46b4b57d651f19450, type: 3}
+  doorSfx: {fileID: 1290088196334516426}
