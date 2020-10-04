@@ -34,7 +34,7 @@ public class MapHandler : MonoBehaviour
 		levelData = ReadMap(mapsPath + "map" + mapNum.ToString() + ".txt");
 
 		var xoffset = 0.0f + map_width / 2;
-		var yoffset = 0.5f + map_height / 2;
+		var yoffset = 0.0f + map_height / 2;
 		var doors = new Dictionary<string, GameObject>();
 		var triggers = new List<KeyValuePair<string, GameObject>>();
 
@@ -57,7 +57,7 @@ public class MapHandler : MonoBehaviour
 					case "0": // Air
 						break;
 					case "1":
-					{ 
+					{
 						var instance = Instantiate(ground1Prefab, new Vector3(spawnx, spawny, 0), Quaternion.identity);
 						instance.transform.SetParent(worldObject.transform);
 						break;

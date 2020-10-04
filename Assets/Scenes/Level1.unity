@@ -813,11 +813,11 @@ MonoBehaviour:
     type: 3}
   box1Prefab: {fileID: 1192308694394577227, guid: 88f17399a343e0548b60e114c048d849,
     type: 3}
-  ground1Prefab: {fileID: 5684431934163466725, guid: 116b17bb2c066794ea42451000c41180,
+  ground1Prefab: {fileID: 5684431934163466725, guid: 6d2a607395d559a48b0c19029040ee78,
     type: 3}
-  ground2Prefab: {fileID: 5684431934163466725, guid: c507b3c271c3fda4ca9d75472aa2b6c7,
+  ground2Prefab: {fileID: 5684431934163466725, guid: 116b17bb2c066794ea42451000c41180,
     type: 3}
-  ground3Prefab: {fileID: 5684431934163466725, guid: 6d2a607395d559a48b0c19029040ee78,
+  ground3Prefab: {fileID: 5684431934163466725, guid: c507b3c271c3fda4ca9d75472aa2b6c7,
     type: 3}
   doorPrefab: {fileID: 5404196977301772943, guid: 193fceda677c8d74e98bbdeb273fb6ce,
     type: 3}
