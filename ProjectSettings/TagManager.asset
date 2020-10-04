@@ -43,6 +43,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Scenery
+    uniqueID: 4196297443
+    locked: 0
   - name: Background
     uniqueID: 2671662437
     locked: 0

@@ -16,9 +16,6 @@ public class Door : Reciver
     {
         sr = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>();
-        var active = IsActive();
-        boxCollider.enabled = active;
-        sr.sprite = active ? activeSprite : inActiveSprite;
     }
 
     protected override void onActivated()

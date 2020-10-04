@@ -71,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1623304859
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7d93e3c7aca170047a915ef3fe5a9971, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16e0446697b60fb439613a2cd5031315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  active: 0
   activeSprite: {fileID: 21300000, guid: e2426b01a2aaf364fbdb0be57c509023, type: 3}
   inActiveSprite: {fileID: 21300000, guid: 7d93e3c7aca170047a915ef3fe5a9971, type: 3}
   leverSfx: {fileID: -6728737587236934478}
@@ -235,4 +236,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leverPullAudioSource: {fileID: 3559616424459451430}
-  leverPullClip: {fileID: 8300000, guid: 3bd8d80518e50f84b81726d1d3aa796d, type: 3}
