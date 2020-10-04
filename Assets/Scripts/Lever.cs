@@ -12,18 +12,27 @@ public class Lever : Trigger
     public LeverSfx leverSfx;
     public void Awake() {
         sr = GetComponent<SpriteRenderer>();
-        sr.sprite = active ? activeSprite : inActiveSprite;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Player") && (collision is BoxCollider2D)) {
+            Eval();
+        }
+        
+    }
+
+    private void Eval() {
+
         leverSfx.PlayPullLever();
+
         if (active)
         {
             sr.sprite = activeSprite;
             active = false;
         }
-        else {
+        else
+        {
             sr.sprite = inActiveSprite;
             active = true;
         }

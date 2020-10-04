@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using UnityEngine;
 using Assets.Scripts;
 
@@ -13,8 +11,16 @@ public class MapHandler : MonoBehaviour
 	public GameObject ground1Prefab;
 	public GameObject ground2Prefab;
 	public GameObject ground3Prefab;
+	public GameObject ground4Prefab;
+	public GameObject ground5Prefab;
+	public GameObject ground6Prefab;
+	public GameObject ground7Prefab;
+	public GameObject ground8Prefab;
+	public GameObject ground9Prefab;
 
 	public GameObject doorPrefab;
+	public GameObject doorFramePrefab;
+	public GameObject trapDoorPrefab;
 	public GameObject pressurePrefab;
 	public GameObject heavyPressurePrefab;
 	public GameObject leverPrefab;
@@ -40,7 +46,7 @@ public class MapHandler : MonoBehaviour
 		var doors = new Dictionary<string, GameObject>();
 		var triggers = new List<KeyValuePair<string, GameObject>>();
 
-		Debug.LogFormat("Offsets: x:{0} y:{1}", xoffset, yoffset);
+		//Debug.LogFormat("Offsets: x:{0} y:{1}", xoffset, yoffset);
 		//Debug.LogFormat("Mapfolder: {0}", mapsPath);
 
 		for (var y = 0; y < map_height; y++)
@@ -56,6 +62,7 @@ public class MapHandler : MonoBehaviour
 							  levelData[y, x] == "E" ? "D" :
 							  levelData[y, x] == "R" ? "F" :
 							  levelData[y, x] == "T" ? "G" :
+							  levelData[y, x] == "." ? "_" :
 							  levelData[y, x] == "H" ? "D" : "";
 
 				switch (levelData[y, x])
@@ -80,13 +87,43 @@ public class MapHandler : MonoBehaviour
 						instance.transform.SetParent(worldObject.transform);
 						break;
 					}
-					case "W":
+					case "4":
 					{
-						var instance = Instantiate(winPrefab, new Vector3(spawnx, spawny, 0), Quaternion.identity);
+						var instance = Instantiate(ground4Prefab, new Vector3(spawnx, spawny, 0), Quaternion.identity);
 						instance.transform.SetParent(worldObject.transform);
 						break;
 					}
-					case "B":
+					case "5":
+					{
+						var instance = Instantiate(ground5Prefab, new Vector3(spawnx, spawny, 0), Quaternion.identity);
+						instance.transform.SetParent(worldObject.transform);
+						break;
+					}
+					case "6":
+					{
+						var instance = Instantiate(ground6Prefab, new Vector3(spawnx, spawny, 0), Quaternion.identity);
+						instance.transform.SetParent(worldObject.transform);
+						break;
+					}
+					case "7":
+					{
+						var instance = Instantiate(ground7Prefab, new Vector3(spawnx, spawny, 0), Quaternion.identity);
+						instance.transform.SetParent(worldObject.transform);
+						break;
+					}
+					case "8":
+					{
+						var instance = Instantiate(ground8Prefab, new Vector3(spawnx, spawny, 0), Quaternion.identity);
+						instance.transform.SetParent(worldObject.transform);
+						break;
+					}
+					case "9":
+					{
+						var instance = Instantiate(ground9Prefab, new Vector3(spawnx, spawny, 0), Quaternion.identity);
+						instance.transform.SetParent(worldObject.transform);
+						break;
+					}
+					case "B": // Box
 					{
 						var instance = Instantiate(box1Prefab, new Vector3(spawnx, spawny, 0), Quaternion.identity);
 						instance.transform.SetParent(worldObject.transform);
@@ -101,7 +138,9 @@ public class MapHandler : MonoBehaviour
 					case "D": case "F": case "G": // Door
 					{
 						var door = Instantiate(doorPrefab, new Vector3(spawnx, spawny + 0.75f, 0), Quaternion.identity);
+						var frame = Instantiate(doorFramePrefab, new Vector3(spawnx, spawny + 2.25f, 0), Quaternion.identity);
 						door.transform.SetParent(worldObject.transform);
+						frame.transform.SetParent(worldObject.transform);
 						doors.Add(levelData[y, x], door);
 						break;
 					}
@@ -113,9 +152,9 @@ public class MapHandler : MonoBehaviour
 						triggers.Add(plateelement);
 						break;
 					}
-					case "E": case "R": case "T": // Lever
+					case "E": case "R": case "T": case ".": // Lever
 					{
-						var lever = Instantiate(leverPrefab, new Vector3(spawnx, spawny, 0), Quaternion.identity);
+						var lever = Instantiate(leverPrefab, new Vector3(spawnx, spawny + 0.75f, 0), Quaternion.identity);
 						lever.transform.SetParent(worldObject.transform);
 						var buttonelement = new KeyValuePair<string, GameObject>(variant, lever);
 						triggers.Add(buttonelement);
@@ -127,6 +166,13 @@ public class MapHandler : MonoBehaviour
 						plate.transform.SetParent(worldObject.transform);
 						var buttonelement = new KeyValuePair<string, GameObject>(variant, plate);
 						triggers.Add(buttonelement);
+						break;
+					}
+					case "_": // Trapdoor
+					{
+						var door = Instantiate(trapDoorPrefab, new Vector3(spawnx - 0.5f, spawny + 0.625f, 0), Quaternion.identity);
+						door.transform.SetParent(worldObject.transform);
+						doors.Add(levelData[y, x], door);
 						break;
 					}
 					default:
@@ -141,15 +187,22 @@ public class MapHandler : MonoBehaviour
 		{
 			foreach (var trigger in triggers)
 			{
-				Debug.LogFormat("have trigger Variant from {0} to {1}", trigger.Key, door.Key);
+				//Debug.LogFormat("have trigger Variant from {0} to {1}", trigger.Key, door.Key);
 				// Matching variants
 				if (trigger.Key == door.Key)
 				{
-					Debug.LogFormat("adding trigger {0}", trigger.Key, door.Key);
-					door.Value.GetComponent<Door>().triggers.Add(trigger.Value.GetComponent<Trigger>());
+					//Debug.LogFormat("adding trigger {0} {1}", trigger.Key, door.Key);
+					door.Value.GetComponent<Reciver>().triggers.Add(trigger.Value.GetComponent<Trigger>());
 				}
 			}
-			door.Value.GetComponent<Door>().Awake(); // this should probably call an "refresh triggers" method instead
+			if (door.Value.GetComponent<Door>())
+			{
+				door.Value.GetComponent<Door>().Awake(); // this should probably call an "refresh triggers" method instead
+			}
+			if (door.Value.GetComponent<TrapDoor>())
+			{
+				door.Value.GetComponent<TrapDoor>().Awake(); // this should probably call an "refresh triggers" method instead
+			}
 		}
 	}
 

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5535827181766174521}
   - component: {fileID: 7119515517128507818}
   m_Layer: 8
-  m_Name: Ground2
+  m_Name: Ground5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: -98669853
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c29d98aaf4d17274f96d3ac40408d80b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 80ecd3442d4233f479af058c80031e47, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

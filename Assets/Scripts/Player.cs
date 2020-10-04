@@ -16,12 +16,14 @@ public class Player : MonoBehaviour
     private bool isGrounded = true;
     private int platformMask;
     private int boxMask;
+	private LevelController levelController;
 
-    void Awake()
+	void Awake()
     {
         body = gameObject.GetComponent<Rigidbody2D>();
         boxCollider = gameObject.GetComponent<BoxCollider2D>();
-        platformMask = LayerMask.GetMask("Platform", "Box");
+		levelController = GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController>();
+		platformMask = LayerMask.GetMask("Platform", "Box");
         boxMask = LayerMask.GetMask("Box");
         render = transform.GetChild(0).transform;
     }
@@ -31,10 +33,19 @@ public class Player : MonoBehaviour
         var grounded = IsGrounded();
         if (!isGrounded && grounded)
         {
-                playerSfx.PlayLandSound();
+            playerSfx.PlayLandSound();
         }
 
-        if (grounded) {
+		if (body.transform.position.x < -19.0f)
+		{
+			levelController.PreviousMap();
+		}
+		if (body.transform.position.x > 19.0f)
+		{
+			levelController.NextMap();
+		}
+
+		if (grounded) {
             if (Input.GetKey(KeyCode.UpArrow))
             {
                 body.velocity = new Vector2(body.velocity.x, jumpSpeed);

@@ -10,7 +10,7 @@ public class LevelController : MonoBehaviour
     public string storyText = "";
 	public GameObject mapHandler;
     public AudioSource ostAudioSource;
-	private int currentMap = 0;
+	private int currentMap = -1;
     private Image headerImage;
     private Text headerText;
     private bool playerHasMoved = false;
@@ -31,6 +31,7 @@ public class LevelController : MonoBehaviour
         // Load next map
         mapHandler.GetComponent<MapHandler>().LoadMap(--currentMap);
         Reset();
+		// @todo Move player to the right of map here
         StartCoroutine(FadeInStoryText());
     }
 

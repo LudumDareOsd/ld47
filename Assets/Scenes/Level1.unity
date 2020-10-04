@@ -308,12 +308,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4608e304e34f5b845979bb74f3892636, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2b382083de8b2c04396060156516764e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.8, y: 2.7}
+  m_Size: {x: 45, y: 25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -526,7 +526,23 @@ MonoBehaviour:
     type: 3}
   ground3Prefab: {fileID: 5684431934163466725, guid: c507b3c271c3fda4ca9d75472aa2b6c7,
     type: 3}
+  ground4Prefab: {fileID: 5684431934163466725, guid: 98d7a4c480440e44696dae34a277a653,
+    type: 3}
+  ground5Prefab: {fileID: 5684431934163466725, guid: c0885babfeb7921439354698683e1647,
+    type: 3}
+  ground6Prefab: {fileID: 5684431934163466725, guid: 45f8c052a754b9e42a166b3c02ccf228,
+    type: 3}
+  ground7Prefab: {fileID: 5684431934163466725, guid: a3c49695fd1919f45b58fa78c31f1d80,
+    type: 3}
+  ground8Prefab: {fileID: 5684431934163466725, guid: 934b49812f7fbea4a93c14e9a068d614,
+    type: 3}
+  ground9Prefab: {fileID: 5684431934163466725, guid: 310f75a8d2eae744a8cb26be71f92d3f,
+    type: 3}
   doorPrefab: {fileID: 5404196977301772943, guid: 193fceda677c8d74e98bbdeb273fb6ce,
+    type: 3}
+  doorFramePrefab: {fileID: 5684431934163466725, guid: 213de1af18449384cb63332522a9b8a7,
+    type: 3}
+  trapDoorPrefab: {fileID: 2569587688806339948, guid: 68c412d7df5f9ff4d92a2980e9417085,
     type: 3}
   pressurePrefab: {fileID: 3439540918726165882, guid: afd6a0101b918f84abbd9006508c7f26,
     type: 3}
