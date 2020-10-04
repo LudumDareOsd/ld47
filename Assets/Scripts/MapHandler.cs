@@ -11,6 +11,12 @@ public class MapHandler : MonoBehaviour
 	public GameObject ground1Prefab;
 	public GameObject ground2Prefab;
 	public GameObject ground3Prefab;
+	public GameObject ground4Prefab;
+	public GameObject ground5Prefab;
+	public GameObject ground6Prefab;
+	public GameObject ground7Prefab;
+	public GameObject ground8Prefab;
+	public GameObject ground9Prefab;
 
 	public GameObject doorPrefab;
 	public GameObject doorFramePrefab;
@@ -78,6 +84,42 @@ public class MapHandler : MonoBehaviour
 					case "3":
 					{
 						var instance = Instantiate(ground3Prefab, new Vector3(spawnx, spawny, 0), Quaternion.identity);
+						instance.transform.SetParent(worldObject.transform);
+						break;
+					}
+					case "4":
+					{
+						var instance = Instantiate(ground4Prefab, new Vector3(spawnx, spawny, 0), Quaternion.identity);
+						instance.transform.SetParent(worldObject.transform);
+						break;
+					}
+					case "5":
+					{
+						var instance = Instantiate(ground5Prefab, new Vector3(spawnx, spawny, 0), Quaternion.identity);
+						instance.transform.SetParent(worldObject.transform);
+						break;
+					}
+					case "6":
+					{
+						var instance = Instantiate(ground6Prefab, new Vector3(spawnx, spawny, 0), Quaternion.identity);
+						instance.transform.SetParent(worldObject.transform);
+						break;
+					}
+					case "7":
+					{
+						var instance = Instantiate(ground7Prefab, new Vector3(spawnx, spawny, 0), Quaternion.identity);
+						instance.transform.SetParent(worldObject.transform);
+						break;
+					}
+					case "8":
+					{
+						var instance = Instantiate(ground8Prefab, new Vector3(spawnx, spawny, 0), Quaternion.identity);
+						instance.transform.SetParent(worldObject.transform);
+						break;
+					}
+					case "9":
+					{
+						var instance = Instantiate(ground9Prefab, new Vector3(spawnx, spawny, 0), Quaternion.identity);
 						instance.transform.SetParent(worldObject.transform);
 						break;
 					}
