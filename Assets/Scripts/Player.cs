@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D body;
     private BoxCollider2D boxCollider;
     private Transform render;
-    private float speed = 40f;
+    private float speed = 100f;
     private float maxSpeed = 5f;
     private float jumpSpeed = 17.9f;
     private bool isGrounded = true;
@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
         render = transform.GetChild(0).transform;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         var grounded = IsGrounded();
         if (!isGrounded && grounded)
