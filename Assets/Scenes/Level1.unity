@@ -530,6 +530,8 @@ MonoBehaviour:
     type: 3}
   pressurePrefab: {fileID: 3439540918726165882, guid: afd6a0101b918f84abbd9006508c7f26,
     type: 3}
+  heavyPressurePrefab: {fileID: 3939585915697615227, guid: 3e850f5a6a10a7b479f62b56fc41806f,
+    type: 3}
   leverPrefab: {fileID: 1518609235911069, guid: d56266a753765134185aadf25159f07a,
     type: 3}
   levelController: {fileID: 1781890725}
