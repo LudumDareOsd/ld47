@@ -277,7 +277,6 @@ public class MapHandler : MonoBehaviour
 					ret[y, x++] = tile.ToString();
 				}
 				y++;
-				//Debug.LogFormat("asdasd {0}, {1}", x, y);
 			}
 		}
 
@@ -285,15 +284,3 @@ public class MapHandler : MonoBehaviour
 	}
 
 }
-
-
-/**
- * Maps som kanske går göra>
- * 1. Enkel knapp med en dörr. Droppa en låda på knappen för att öppna.
- * 2. Liknande som #1 men 2 knappar, droppa ner en låda och flytta en låda, ska gå misslyckas om man flyttar en för långt eller så.
- * 3. 1 knapp men 2 lådor, måste stacka båda lådorna i en viss ordning på knappen för att dörren ska öppnas. sen klara av att hoppa över ett hål där man använder dessa lådor till dörren.
- * 4. 2 Dörrar 2 Knappar, öppna första, sen andra för att klara banan
- * 5. 2 Dörrar 2 knappar, du måste öppna den bortre dörren först och sen den första dörren, knappen till andra är inne i första rummet
- * 6. 2 Dörrar 2 knappar 1 spak. Ordningen för att klara borde bli, låda på knapp 1, använd spak i rummet som öppnas (denna öppnar nu en låda till), sen tillbaka i rum 1 för låda på knapp 2
- * 7. 
- **/

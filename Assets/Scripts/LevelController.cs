@@ -8,8 +8,8 @@ public class LevelController : MonoBehaviour
     public float typeWriterDelay = 0.1f;
     public string storyText = "";
     public AudioSource ostAudioSource;
-	public int currentMap = 2;
-    public int maxMap = 7;
+	public int currentMap = 1;
+    public int maxMap = 10;
     private Image headerImage;
     private Text headerText;
     private bool playerHasMoved = false;
