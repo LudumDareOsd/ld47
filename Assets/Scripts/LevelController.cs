@@ -10,7 +10,7 @@ public class LevelController : MonoBehaviour
     public string storyText = "";
 	public GameObject mapHandler;
     public AudioSource ostAudioSource;
-	private int currentMap = -1;
+	public int currentMap = 2;
     private Image headerImage;
     private Text headerText;
     private bool playerHasMoved = false;
