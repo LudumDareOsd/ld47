@@ -15,6 +15,7 @@ namespace Assets.Scripts
 
             // var hits = hits1.Union(hits2).ToList();
             prevNumberOfHits = numberOfHits;
+
             numberOfHits = hits.Count;
 
             Debug.DrawRay(transform.position + new Vector3(0, 0.2f, 0), Vector2.up * 1.5f, Color.green);

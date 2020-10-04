@@ -176,7 +176,7 @@ public class MapHandler : MonoBehaviour
 					}
 					case "_": // Trapdoor
 					{
-						var door = Instantiate(trapDoorPrefab, new Vector3(spawnx - 0.5f, spawny + 0.625f, 0), Quaternion.identity);
+						var door = Instantiate(trapDoorPrefab, new Vector3(spawnx + 2.5f, spawny - 1.625f, 0), Quaternion.identity);
 						door.transform.SetParent(worldObject.transform);
 						doors.Add(levelData[y, x], door);
 						break;

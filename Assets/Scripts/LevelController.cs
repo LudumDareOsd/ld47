@@ -5,16 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
 {
-    public Canvas storyCanvas;
     public float typeWriterDelay = 0.1f;
     public string storyText = "";
-	public GameObject mapHandler;
     public AudioSource ostAudioSource;
-	private int currentMap = -1;
+	private int currentMap = 0;
     private Image headerImage;
     private Text headerText;
     private bool playerHasMoved = false;
     private bool textIsFinished = false;
+    private Canvas storyCanvas;
+    private GameObject mapHandler;
 
     public void Awake()
     {
@@ -23,21 +23,17 @@ public class LevelController : MonoBehaviour
         if (objs.Length > 1)
         {
             Destroy(this.gameObject);
-        }
+        } else {
+            DontDestroyOnLoad(this.gameObject);
 
-        DontDestroyOnLoad(this.gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
     }
 
     // Start is called before the first frame update
     public void Start()
     {
         ostAudioSource.Play();
-        headerImage = storyCanvas.GetComponentInChildren<Image>();
-        headerText = storyCanvas.GetComponentInChildren<Text>();
-        // Load next map
-        mapHandler.GetComponent<MapHandler>().LoadMap(++currentMap);
-        Reset();
-        StartCoroutine(FadeInStoryText());
     }
 
     public void Update()
@@ -52,27 +48,34 @@ public class LevelController : MonoBehaviour
 
     public void NextMap()
     {
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-		// Load next map
-		mapHandler.GetComponent<MapHandler>().LoadMap(++currentMap);
+        currentMap++;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        storyCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        mapHandler = GameObject.Find("MapHandler");
+
+        headerImage = storyCanvas.GetComponentInChildren<Image>();
+        headerText = storyCanvas.GetComponentInChildren<Text>();
+
+        mapHandler.GetComponent<MapHandler>().LoadMap(currentMap);
         Reset();
+
+        StopAllCoroutines();
         StartCoroutine(FadeInStoryText());
     }
 
     public void PreviousMap()
     {
+        currentMap--;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        // Load next map
-        mapHandler.GetComponent<MapHandler>().LoadMap(--currentMap);
-        Reset();
-		// @todo Move player to the right of map here
-        StartCoroutine(FadeInStoryText());
     }
 
     private void Reset()
     {
         headerText.text = "";
-        storyCanvas.enabled = headerImage.enabled = headerText.enabled = false;
         textIsFinished = false;
         playerHasMoved = false;
     }
@@ -116,8 +119,6 @@ public class LevelController : MonoBehaviour
 
     private IEnumerator FadeInStoryText()
     {
-        storyCanvas.enabled = headerImage.enabled = headerText.enabled = true;
-
         for (float i = 0f; i <= 1; i += Time.deltaTime)
         {
             headerImage.color = new Color(1, 1, 1, i);
@@ -137,6 +138,5 @@ public class LevelController : MonoBehaviour
             headerText.color = new Color(255, 255, 255, i);
             yield return null;
         }
-        storyCanvas.enabled = false;
     }
 }
