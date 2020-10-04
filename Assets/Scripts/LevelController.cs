@@ -8,7 +8,7 @@ public class LevelController : MonoBehaviour
     public float typeWriterDelay = 0.1f;
     public string storyText = "";
     public AudioSource ostAudioSource;
-	private int currentMap = 0;
+	public int currentMap = 2;
     private Image headerImage;
     private Text headerText;
     private bool playerHasMoved = false;
@@ -60,7 +60,10 @@ public class LevelController : MonoBehaviour
         headerImage = storyCanvas.GetComponentInChildren<Image>();
         headerText = storyCanvas.GetComponentInChildren<Text>();
 
-        mapHandler.GetComponent<MapHandler>().LoadMap(currentMap);
+        var mh = mapHandler.GetComponent<MapHandler>();
+        mh.levelController = gameObject;
+        mh.LoadMap(currentMap);
+        
         Reset();
 
         StopAllCoroutines();
