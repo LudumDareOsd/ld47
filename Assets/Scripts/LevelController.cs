@@ -18,10 +18,18 @@ public class LevelController : MonoBehaviour
 
     public void NextMap()
     {
-		// Reload Scene - make this not reload LevelController
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 		// Load next map
 		mapHandler.GetComponent<MapHandler>().LoadMap(++currentMap);
+        Reset();
+        StartCoroutine(FadeInStoryText());
+    }
+
+    public void PreviousMap()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        // Load next map
+        mapHandler.GetComponent<MapHandler>().LoadMap(--currentMap);
         Reset();
         StartCoroutine(FadeInStoryText());
     }
