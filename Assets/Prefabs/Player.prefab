@@ -194,7 +194,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9591fedac474a5c49a6e0ff757be9a55, type: 3}
   - {fileID: 8300000, guid: fb223b535be4021439f77ba108a05b99, type: 3}
   landClip: {fileID: 8300000, guid: 41ab5565474c0234d8eeb8f270a858db, type: 3}
-  volume: 0.5
+  landVolume: 0.5
+  walkVolume: 0.15
+  shoveVolume: 0.25
   timeBetweenMovement: 0.5
 --- !u!61 &1602017048602592437
 BoxCollider2D:
@@ -307,7 +309,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -914905183
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 7815371044791450175, guid: cf41d08df43b1c04a9c1c4c819e50b1a,
     type: 3}

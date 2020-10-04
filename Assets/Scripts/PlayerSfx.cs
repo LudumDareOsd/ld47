@@ -6,11 +6,13 @@ public class PlayerSfx : MonoBehaviour
     public AudioClip[] stepClips;
     public AudioClip[] shoveClips;
     public AudioClip landClip;
-    public float volume = 0.5f;
+    public float landVolume = 0.5f;
+    public float walkVolume = 0.15f;
+    public float shoveVolume = 0.25f;
     public float timeBetweenMovement = 0.5f;
     float movementTimer;
     bool leftLeg = false;
-    private void PlayClips(AudioClip[] clips)
+    private void PlayClips(AudioClip[] clips, float volume)
     {
         movementTimer += Time.deltaTime;
         if (movementTimer > timeBetweenMovement)
@@ -23,15 +25,15 @@ public class PlayerSfx : MonoBehaviour
     }
     public void PlayWalk()
     {
-        PlayClips(stepClips);
+        PlayClips(stepClips, walkVolume);
     }
     public void PlayShoveBox()
     {
-        PlayClips(shoveClips);
+        PlayClips(shoveClips, shoveVolume);
     }
     public void PlayLandSound()
     {
-        audioSource.PlayOneShot(landClip, volume);
+        audioSource.PlayOneShot(landClip, landVolume);
     }
     AudioClip RandomClip(AudioClip[] clips)
     {
