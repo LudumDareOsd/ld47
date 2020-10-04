@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3433818752156118809}
   - component: {fileID: 5597459967871810151}
   - component: {fileID: 1602017048602592437}
+  - component: {fileID: 8581956213084774179}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -221,6 +222,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7, y: 2}
   m_EdgeRadius: 0
+--- !u!58 &8581956213084774179
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7673400290702432263}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &7711407564286852961
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,7 +309,7 @@ SpriteRenderer:
   m_SortingLayerID: -914905183
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2209863079039181156, guid: bfec520626b0a404b938d1bb6478847b,
+  m_Sprite: {fileID: 7815371044791450175, guid: cf41d08df43b1c04a9c1c4c819e50b1a,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
