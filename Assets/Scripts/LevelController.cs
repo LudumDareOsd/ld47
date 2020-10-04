@@ -31,6 +31,7 @@ public class LevelController : MonoBehaviour
         // Load next map
         mapHandler.GetComponent<MapHandler>().LoadMap(--currentMap);
         Reset();
+		// @todo Move player to the right of map here
         StartCoroutine(FadeInStoryText());
     }
 
