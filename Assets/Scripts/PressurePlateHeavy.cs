@@ -17,8 +17,6 @@ namespace Assets.Scripts
             prevNumberOfHits = numberOfHits;
             numberOfHits = hits.Count;
 
-            Debug.Log(numberOfHits);
-
             Debug.DrawRay(transform.position + new Vector3(0, 0.2f, 0), Vector2.up * 1.5f, Color.green);
             //Debug.DrawRay(transform.position + new Vector3(0.25f, 0.2f, 0), Vector2.up * 2f, Color.green);
 

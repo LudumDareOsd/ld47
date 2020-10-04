@@ -25,6 +25,12 @@ public class MapHandler : MonoBehaviour
 	public GameObject heavyPressurePrefab;
 	public GameObject leverPrefab;
 
+	public GameObject BG1;
+	public GameObject BG2;
+	public GameObject BG3;
+	public GameObject BG4;
+	public GameObject BG5;
+
 	public const int map_width = 39;
 	public const int map_height = 21;
 	public GameObject levelController;
@@ -219,6 +225,41 @@ public class MapHandler : MonoBehaviour
 			{
 				var introText = line.Substring(1).Trim();
 				levelController.GetComponent<LevelController>().storyText = introText;
+			} else if (line[0] == '*') {
+				var bgName = line.Substring(1).Trim();
+
+				GameObject prefab = null;
+
+				switch (bgName) {
+
+					case "BG1":
+						prefab = BG1;
+						break;
+
+					case "BG2":
+						prefab = BG2;
+						break;
+
+					case "BG3":
+						prefab = BG3;
+						break;
+
+					case "BG4":
+						prefab = BG4;
+						break;
+
+					case "BG5":
+						prefab = BG5;
+						break;
+
+					default:
+						Debug.Log("Could not find Background");
+						break;
+
+				}
+
+				var bg = Instantiate(prefab);
+				bg.transform.SetParent(worldObject.transform);
 			}
 			else
 			{

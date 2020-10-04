@@ -16,6 +16,40 @@ public class LevelController : MonoBehaviour
     private bool playerHasMoved = false;
     private bool textIsFinished = false;
 
+    public void Awake()
+    {
+        var objs = GameObject.FindObjectsOfType<LevelController>();
+
+        if (objs.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+
+        DontDestroyOnLoad(this.gameObject);
+    }
+
+    // Start is called before the first frame update
+    public void Start()
+    {
+        ostAudioSource.Play();
+        headerImage = storyCanvas.GetComponentInChildren<Image>();
+        headerText = storyCanvas.GetComponentInChildren<Text>();
+        // Load next map
+        mapHandler.GetComponent<MapHandler>().LoadMap(++currentMap);
+        Reset();
+        StartCoroutine(FadeInStoryText());
+    }
+
+    public void Update()
+    {
+        UpdatePlayerHasMoved();
+
+        if (playerHasMoved && textIsFinished)
+        {
+            StartCoroutine(FadeOutStoryText());
+        }
+    }
+
     public void NextMap()
     {
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -33,28 +67,6 @@ public class LevelController : MonoBehaviour
         Reset();
 		// @todo Move player to the right of map here
         StartCoroutine(FadeInStoryText());
-    }
-
-    // Start is called before the first frame update
-    private void Start()
-    {
-        ostAudioSource.Play();
-        headerImage = storyCanvas.GetComponentInChildren<Image>();
-        headerText = storyCanvas.GetComponentInChildren<Text>();
-		// Load next map
-		mapHandler.GetComponent<MapHandler>().LoadMap(++currentMap);
-		Reset();
-		StartCoroutine(FadeInStoryText());
-	}
-
-	private void Update()
-    {
-        UpdatePlayerHasMoved();
-
-        if (playerHasMoved && textIsFinished)
-        {
-            StartCoroutine(FadeOutStoryText());
-        }
     }
 
     private void Reset()
