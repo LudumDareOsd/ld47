@@ -308,7 +308,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6f523c8602e34fe458dd7038efc6675a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4608e304e34f5b845979bb74f3892636, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -438,7 +438,7 @@ RectTransform:
   m_GameObject: {fileID: 1529699954}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1}
   m_Children: []
   m_Father: {fileID: 502459922}
   m_RootOrder: 0
@@ -520,15 +520,17 @@ MonoBehaviour:
     type: 3}
   box1Prefab: {fileID: 1192308694394577227, guid: 88f17399a343e0548b60e114c048d849,
     type: 3}
-  ground1Prefab: {fileID: 5684431934163466725, guid: 116b17bb2c066794ea42451000c41180,
+  ground1Prefab: {fileID: 5684431934163466725, guid: 6d2a607395d559a48b0c19029040ee78,
     type: 3}
-  ground2Prefab: {fileID: 5684431934163466725, guid: c507b3c271c3fda4ca9d75472aa2b6c7,
+  ground2Prefab: {fileID: 5684431934163466725, guid: 116b17bb2c066794ea42451000c41180,
     type: 3}
-  ground3Prefab: {fileID: 5684431934163466725, guid: 6d2a607395d559a48b0c19029040ee78,
+  ground3Prefab: {fileID: 5684431934163466725, guid: c507b3c271c3fda4ca9d75472aa2b6c7,
     type: 3}
   doorPrefab: {fileID: 5404196977301772943, guid: 193fceda677c8d74e98bbdeb273fb6ce,
     type: 3}
   pressurePrefab: {fileID: 3439540918726165882, guid: afd6a0101b918f84abbd9006508c7f26,
+    type: 3}
+  heavyPressurePrefab: {fileID: 3939585915697615227, guid: 3e850f5a6a10a7b479f62b56fc41806f,
     type: 3}
   leverPrefab: {fileID: 1518609235911069, guid: d56266a753765134185aadf25159f07a,
     type: 3}
@@ -811,7 +813,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 12.2
+  orthographic size: 12
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using Assets.Scripts;
 
 public class MapHandler : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class MapHandler : MonoBehaviour
 
 	public GameObject doorPrefab;
 	public GameObject pressurePrefab;
+	public GameObject heavyPressurePrefab;
 	public GameObject leverPrefab;
 
 	public const int map_width = 39;
@@ -34,7 +36,7 @@ public class MapHandler : MonoBehaviour
 		levelData = ReadMap(mapsPath + "map" + mapNum.ToString() + ".txt");
 
 		var xoffset = 0.0f + map_width / 2;
-		var yoffset = 0.5f + map_height / 2;
+		var yoffset = 0.0f + map_height / 2;
 		var doors = new Dictionary<string, GameObject>();
 		var triggers = new List<KeyValuePair<string, GameObject>>();
 
@@ -48,16 +50,20 @@ public class MapHandler : MonoBehaviour
 				var spawnx = x - xoffset;
 				var spawny = -y + yoffset;
 				// Trigger variant, could be a dict or w/e... smh
-				var variant = levelData[y, x] == "P" ? "D" : // P doors match with D doors etc...
+				var variant = levelData[y, x] == "P" ? "D" : // P switch match with D doors etc...
 							  levelData[y, x] == "O" ? "F" :
-							  levelData[y, x] == "I" ? "G" : "";
+							  levelData[y, x] == "I" ? "G" :
+							  levelData[y, x] == "E" ? "D" :
+							  levelData[y, x] == "R" ? "F" :
+							  levelData[y, x] == "T" ? "G" :
+							  levelData[y, x] == "H" ? "D" : "";
 
 				switch (levelData[y, x])
 				{
 					case "0": // Air
 						break;
 					case "1":
-					{ 
+					{
 						var instance = Instantiate(ground1Prefab, new Vector3(spawnx, spawny, 0), Quaternion.identity);
 						instance.transform.SetParent(worldObject.transform);
 						break;
@@ -79,39 +85,47 @@ public class MapHandler : MonoBehaviour
 						var instance = Instantiate(winPrefab, new Vector3(spawnx, spawny, 0), Quaternion.identity);
 						instance.transform.SetParent(worldObject.transform);
 						break;
-						}
+					}
 					case "B":
 					{
 						var instance = Instantiate(box1Prefab, new Vector3(spawnx, spawny, 0), Quaternion.identity);
 						instance.transform.SetParent(worldObject.transform);
 						break;
-						}
+					}
 					case "X":
 					{
 						var instance = Instantiate(playerPrefab, new Vector3(spawnx, spawny, 0), Quaternion.identity);
 						instance.transform.SetParent(worldObject.transform);
 						break;
-						}
+					}
 					case "D": case "F": case "G": // Door
-						{
+					{
 						var door = Instantiate(doorPrefab, new Vector3(spawnx, spawny + 0.75f, 0), Quaternion.identity);
 						door.transform.SetParent(worldObject.transform);
 						doors.Add(levelData[y, x], door);
 						break;
 					}
 					case "P": case "O": case "I": // Pressure plate
-						{
+					{
 						var plate = Instantiate(pressurePrefab, new Vector3(spawnx, spawny - 0.375f, 0), Quaternion.identity);
 						plate.transform.SetParent(worldObject.transform);
 						var plateelement = new KeyValuePair<string, GameObject>(variant, plate);
 						triggers.Add(plateelement);
 						break;
 					}
-					case "E": case "R": case "T": // Button
-						{
-						var button = Instantiate(playerPrefab, new Vector3(spawnx, spawny, 0), Quaternion.identity);
-						button.transform.SetParent(worldObject.transform);
-						var buttonelement = new KeyValuePair<string, GameObject>(variant, button);
+					case "E": case "R": case "T": // Lever
+					{
+						var lever = Instantiate(leverPrefab, new Vector3(spawnx, spawny, 0), Quaternion.identity);
+						lever.transform.SetParent(worldObject.transform);
+						var buttonelement = new KeyValuePair<string, GameObject>(variant, lever);
+						triggers.Add(buttonelement);
+						break;
+					}
+					case "H": // Heavy pressure
+					{
+						var plate = Instantiate(heavyPressurePrefab, new Vector3(spawnx, spawny - 0.375f, 0), Quaternion.identity);
+						plate.transform.SetParent(worldObject.transform);
+						var buttonelement = new KeyValuePair<string, GameObject>(variant, plate);
 						triggers.Add(buttonelement);
 						break;
 					}
@@ -127,11 +141,12 @@ public class MapHandler : MonoBehaviour
 		{
 			foreach (var trigger in triggers)
 			{
-				//Debug.LogFormat("have trigger Variant from {0} to {1}", trigger.Key, door.Key);
+				Debug.LogFormat("have trigger Variant from {0} to {1}", trigger.Key, door.Key);
 				// Matching variants
 				if (trigger.Key == door.Key)
 				{
-					door.Value.GetComponent<Door>().triggers.Add(trigger.Value.GetComponent<PressurePlate>());
+					Debug.LogFormat("adding trigger {0}", trigger.Key, door.Key);
+					door.Value.GetComponent<Door>().triggers.Add(trigger.Value.GetComponent<Trigger>());
 				}
 			}
 			door.Value.GetComponent<Door>().Awake(); // this should probably call an "refresh triggers" method instead
@@ -151,7 +166,6 @@ public class MapHandler : MonoBehaviour
 			{
 				var introText = line.Substring(1).Trim();
 				levelController.GetComponent<LevelController>().storyText = introText;
-				Debug.LogFormat("Do something with introtext here> {0}", introText);
 			}
 			else
 			{
