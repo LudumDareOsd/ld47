@@ -61,8 +61,8 @@ public class Player : MonoBehaviour
         var spd = Mathf.Abs(body.velocity.x);
 
         animator.SetFloat("speed", spd);
-
         animator.SetFloat("speedy", body.velocity.y);
+        animator.SetBool("grounded", grounded);
 
         if (IsPushing() && spd > 0.01f) {
             playerSfx.PlayShoveBox();
