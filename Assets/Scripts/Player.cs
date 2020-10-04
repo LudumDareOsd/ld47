@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     private Transform render;
     private float speed = 40f;
     private float maxSpeed = 5f;
-    private float jumpSpeed = 16f;
+    private float jumpSpeed = 17.9f;
     private bool isGrounded = true;
     private int platformMask;
     private int boxMask;
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
         {
             playerSfx.PlayLandSound();
         }
-
+        isGrounded = grounded;
 		if (body.transform.position.x < -19.0f)
 		{
 			levelController.PreviousMap();

@@ -144,7 +144,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -241,8 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c41085e3e3ba13a46bae268140dd60ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorAudioSource: {fileID: 173510527803928159, guid: 193fceda677c8d74e98bbdeb273fb6ce,
-    type: 3}
+  doorAudioSource: {fileID: 8693472501759193193}
   openDoorClip: {fileID: 8300000, guid: b236f595085944f47ba39507a709da8e, type: 3}
   closeDoorClip: {fileID: 8300000, guid: f6a9b6d356d553a438612c85b7886cbe, type: 3}
 --- !u!114 &4007625336335748122

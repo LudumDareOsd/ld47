@@ -10,6 +10,7 @@ public class LevelController : MonoBehaviour
     public AudioSource ostAudioSource;
 	public int currentMap = 1;
     public int maxMap = 10;
+	private bool loadPrevious = false;
     private Image headerImage;
     private Text headerText;
     private bool playerHasMoved = false;
@@ -73,9 +74,10 @@ public class LevelController : MonoBehaviour
 
         var mh = mapHandler.GetComponent<MapHandler>();
         mh.levelController = gameObject;
-        mh.LoadMap(currentMap);
-        
-        Reset();
+        mh.LoadMap(currentMap, loadPrevious);
+
+		loadPrevious = false;
+		Reset();
 
         StopAllCoroutines();
         StartCoroutine(FadeInStoryText());
@@ -84,7 +86,8 @@ public class LevelController : MonoBehaviour
     public void PreviousMap()
     {
         currentMap--;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		loadPrevious = true;
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void Reset()

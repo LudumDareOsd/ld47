@@ -43,7 +43,7 @@ public class MapHandler : MonoBehaviour
 	private string[,] levelData = new string[map_height, map_width];
 	private GameObject worldObject;
 
-	public void LoadMap(int mapNum)
+	public void LoadMap(int mapNum, bool backwards = false)
 	{
 		worldObject = GameObject.FindGameObjectWithTag("WorldObject");
 		mapsPath = "Maps/";
@@ -139,6 +139,14 @@ public class MapHandler : MonoBehaviour
 					}
 					case "X":
 					{
+						if (backwards) break;
+						var instance = Instantiate(playerPrefab, new Vector3(spawnx, spawny, 0), Quaternion.identity);
+						instance.transform.SetParent(worldObject.transform);
+						break;
+					}
+					case "Z":
+					{
+						if (!backwards) break;
 						var instance = Instantiate(playerPrefab, new Vector3(spawnx, spawny, 0), Quaternion.identity);
 						instance.transform.SetParent(worldObject.transform);
 						break;

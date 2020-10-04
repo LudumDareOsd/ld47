@@ -7,8 +7,8 @@ public class PlayerSfx : MonoBehaviour
     public AudioClip[] shoveClips;
     public AudioClip landClip;
     public float landVolume = 0.5f;
-    public float walkVolume = 0.15f;
-    public float shoveVolume = 0.25f;
+    public float walkVolume = 0.1f;
+    public float shoveVolume = 0.05f;
     public float timeBetweenMovement = 0.5f;
     float movementTimer;
     bool leftLeg = false;
