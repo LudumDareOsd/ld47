@@ -9,6 +9,7 @@ public class LevelController : MonoBehaviour
     public string storyText = "";
     public AudioSource ostAudioSource;
 	public int currentMap = 2;
+    public int maxMap = 7;
     private Image headerImage;
     private Text headerText;
     private bool playerHasMoved = false;
@@ -46,9 +47,18 @@ public class LevelController : MonoBehaviour
         }
     }
 
+    public void Reload() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public void NextMap()
     {
         currentMap++;
+
+        if (currentMap > maxMap) {
+            currentMap = 0;
+        }
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

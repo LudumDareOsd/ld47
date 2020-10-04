@@ -537,7 +537,7 @@ MonoBehaviour:
   typeWriterDelay: 0.1
   storyText: Oh, here again! How do i get out of this loop?
   ostAudioSource: {fileID: 1781890728}
-  currentMap: 2
+  currentMap: 7
 --- !u!82 &1781890728
 AudioSource:
   m_ObjectHideFlags: 0

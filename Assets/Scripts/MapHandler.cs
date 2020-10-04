@@ -224,6 +224,7 @@ public class MapHandler : MonoBehaviour
 	{
 		var ret = new string[map_height, map_width];
 		var text = System.IO.File.ReadAllLines(file);
+
 		var y = 0;
 		foreach (var line in text)
 		{
