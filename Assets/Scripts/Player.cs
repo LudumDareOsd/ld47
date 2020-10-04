@@ -33,8 +33,8 @@ public class Player : MonoBehaviour
         {
                 playerSfx.PlayLandSound();
         }
-        isGrounded = grounded;
-        if (isGrounded) {
+
+        if (grounded) {
             if (Input.GetKey(KeyCode.UpArrow))
             {
                 body.velocity = new Vector2(body.velocity.x, jumpSpeed);
@@ -66,10 +66,10 @@ public class Player : MonoBehaviour
 
         if (IsPushing() && spd > 0.01f) {
             animator.SetBool("pushing", true);
-            render.localPosition = new Vector2(-0.6f, 0f);
+            render.localPosition = new Vector2(-0.6f, -0.1f);
         } else {
             animator.SetBool("pushing", false);
-            render.localPosition = new Vector2(0f, 0f);
+            render.localPosition = new Vector2(0f, -0.1f);
         }
     }
 
@@ -83,29 +83,29 @@ public class Player : MonoBehaviour
         }
     }
 
-    private Vector2 Right(Vector2 speed, bool grounded) {
+    private Vector2 Right(Vector2 spd, bool grounded) {
         if (!grounded)
         {
-            var inAirSpeed = speed.x * 0.1f;
+            var inAirSpeed = spd.x * 0.5f;
 
-            if (speed.x >= inAirSpeed)
+            if (spd.x >= inAirSpeed)
             {
-                speed = new Vector2(inAirSpeed, speed.y);
+                spd = new Vector2(inAirSpeed, spd.y);
             }
         }
 
         transform.localRotation = Quaternion.Euler(0, 0, 0);
 
-        return speed;
+        return spd;
     }
 
     private Vector2 Left(Vector2 speed, bool grounded)
     {
         if (!grounded)
         {
-            var inAirSpeed = speed.x * 0.1f;
+            var inAirSpeed = speed.x * 0.5f;
 
-            if (speed.x < inAirSpeed)
+            if (speed.x <= inAirSpeed)
             {
                 speed = new Vector2(inAirSpeed, speed.y);
             }
@@ -117,10 +117,9 @@ public class Player : MonoBehaviour
     }
 
     private bool IsPushing() {
+        var hit = Physics2D.Raycast(transform.position, transform.right, 0.7f, boxMask);
 
-        var hit = Physics2D.Raycast(transform.position, transform.right, 0.5f, boxMask);
-
-        Debug.DrawRay(transform.position, transform.right);
+        Debug.DrawRay(transform.position, transform.right * 0.7f);
 
         return hit.collider != null;
     }
