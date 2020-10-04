@@ -33,6 +33,7 @@ public class LevelController : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
+        ostAudioSource.loop = true;
         ostAudioSource.Play();
     }
 
