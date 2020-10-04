@@ -13,6 +13,8 @@ public class MapHandler : MonoBehaviour
 	public GameObject ground3Prefab;
 
 	public GameObject doorPrefab;
+	public GameObject doorFramePrefab;
+	public GameObject trapDoorPrefab;
 	public GameObject pressurePrefab;
 	public GameObject heavyPressurePrefab;
 	public GameObject leverPrefab;
@@ -54,6 +56,7 @@ public class MapHandler : MonoBehaviour
 							  levelData[y, x] == "E" ? "D" :
 							  levelData[y, x] == "R" ? "F" :
 							  levelData[y, x] == "T" ? "G" :
+							  levelData[y, x] == "." ? "_" :
 							  levelData[y, x] == "H" ? "D" : "";
 
 				switch (levelData[y, x])
@@ -93,7 +96,9 @@ public class MapHandler : MonoBehaviour
 					case "D": case "F": case "G": // Door
 					{
 						var door = Instantiate(doorPrefab, new Vector3(spawnx, spawny + 0.75f, 0), Quaternion.identity);
+						var frame = Instantiate(doorFramePrefab, new Vector3(spawnx, spawny + 2.25f, 0), Quaternion.identity);
 						door.transform.SetParent(worldObject.transform);
+						frame.transform.SetParent(worldObject.transform);
 						doors.Add(levelData[y, x], door);
 						break;
 					}
@@ -105,7 +110,7 @@ public class MapHandler : MonoBehaviour
 						triggers.Add(plateelement);
 						break;
 					}
-					case "E": case "R": case "T": // Lever
+					case "E": case "R": case "T": case ".": // Lever
 					{
 						var lever = Instantiate(leverPrefab, new Vector3(spawnx, spawny + 0.75f, 0), Quaternion.identity);
 						lever.transform.SetParent(worldObject.transform);
@@ -119,6 +124,13 @@ public class MapHandler : MonoBehaviour
 						plate.transform.SetParent(worldObject.transform);
 						var buttonelement = new KeyValuePair<string, GameObject>(variant, plate);
 						triggers.Add(buttonelement);
+						break;
+					}
+					case "_": // Trapdoor
+					{
+						var door = Instantiate(trapDoorPrefab, new Vector3(spawnx - 0.5f, spawny + 0.625f, 0), Quaternion.identity);
+						door.transform.SetParent(worldObject.transform);
+						doors.Add(levelData[y, x], door);
 						break;
 					}
 					default:
@@ -137,11 +149,18 @@ public class MapHandler : MonoBehaviour
 				// Matching variants
 				if (trigger.Key == door.Key)
 				{
-					//Debug.LogFormat("adding trigger {0}", trigger.Key, door.Key);
-					door.Value.GetComponent<Door>().triggers.Add(trigger.Value.GetComponent<Trigger>());
+					//Debug.LogFormat("adding trigger {0} {1}", trigger.Key, door.Key);
+					door.Value.GetComponent<Reciver>().triggers.Add(trigger.Value.GetComponent<Trigger>());
 				}
 			}
-			door.Value.GetComponent<Door>().Awake(); // this should probably call an "refresh triggers" method instead
+			if (door.Value.GetComponent<Door>())
+			{
+				door.Value.GetComponent<Door>().Awake(); // this should probably call an "refresh triggers" method instead
+			}
+			if (door.Value.GetComponent<TrapDoor>())
+			{
+				door.Value.GetComponent<TrapDoor>().Awake(); // this should probably call an "refresh triggers" method instead
+			}
 		}
 	}
 

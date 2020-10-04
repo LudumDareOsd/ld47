@@ -528,6 +528,10 @@ MonoBehaviour:
     type: 3}
   doorPrefab: {fileID: 5404196977301772943, guid: 193fceda677c8d74e98bbdeb273fb6ce,
     type: 3}
+  doorFramePrefab: {fileID: 5684431934163466725, guid: 213de1af18449384cb63332522a9b8a7,
+    type: 3}
+  trapDoorPrefab: {fileID: 2569587688806339948, guid: 68c412d7df5f9ff4d92a2980e9417085,
+    type: 3}
   pressurePrefab: {fileID: 3439540918726165882, guid: afd6a0101b918f84abbd9006508c7f26,
     type: 3}
   heavyPressurePrefab: {fileID: 3939585915697615227, guid: 3e850f5a6a10a7b479f62b56fc41806f,
