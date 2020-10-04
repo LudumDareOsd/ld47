@@ -243,4 +243,6 @@ MonoBehaviour:
   boxClips:
   - {fileID: 8300000, guid: 4d28909593912ef479c4edae8c46286e, type: 3}
   - {fileID: 8300000, guid: fa4f6b0b2bf217f49a893bf172bfe911, type: 3}
+  - {fileID: 8300000, guid: 1ed926cc39f89b1439f259f2ca25477d, type: 3}
+  - {fileID: 8300000, guid: 3546c3a60b160a84c958519e808c01aa, type: 3}
   boxSource: {fileID: 261254601476941101}
