@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts;
+using System.Text.RegularExpressions;
 
 public class MapHandler : MonoBehaviour
 {
@@ -45,8 +46,8 @@ public class MapHandler : MonoBehaviour
 	public void LoadMap(int mapNum)
 	{
 		worldObject = GameObject.FindGameObjectWithTag("WorldObject");
-		mapsPath = Application.dataPath + "/Maps/";
-		levelData = ReadMap(mapsPath + "map" + mapNum.ToString() + ".txt");
+		mapsPath = "Maps/";
+		levelData = ReadMap(mapsPath + "map" + mapNum.ToString());
 
 		var xoffset = 0.0f + map_width / 2;
 		var yoffset = 0.0f + map_height / 2;
@@ -223,7 +224,9 @@ public class MapHandler : MonoBehaviour
 	private string[,] ReadMap(string file)
 	{
 		var ret = new string[map_height, map_width];
-		var text = System.IO.File.ReadAllLines(file);
+
+		var textAsset = Resources.Load<TextAsset>(file);
+		var text = Regex.Split(textAsset.text, "\r\n|\r|\n");
 
 		var y = 0;
 		foreach (var line in text)
