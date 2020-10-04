@@ -52,6 +52,10 @@ public class Player : MonoBehaviour
             }
         }
 
+        if(Input.GetKey(KeyCode.R)) {
+            levelController.Reload();
+        }
+
         if (Input.GetKey(KeyCode.RightArrow))
         {
             body.AddForce(Right(new Vector2(speed, 0), grounded));
