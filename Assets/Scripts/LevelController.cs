@@ -9,7 +9,7 @@ public class LevelController : MonoBehaviour
     public float typeWriterDelay = 0.1f;
     public string storyText = "";
 	public GameObject mapHandler;
-
+    public AudioSource ostAudioSource;
 	private int currentMap = 0;
     private Image headerImage;
     private Text headerText;
@@ -29,6 +29,7 @@ public class LevelController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        ostAudioSource.Play();
         headerImage = storyCanvas.GetComponentInChildren<Image>();
         headerText = storyCanvas.GetComponentInChildren<Text>();
 		// Load next map

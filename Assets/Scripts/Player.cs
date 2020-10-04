@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
 
         MaxSpeed();
 
-        if (IsWalking())
+        if (IsMovingGrounded() && ! IsPushing())
         {
             playerSfx.PlayWalk();
         }
@@ -65,6 +65,7 @@ public class Player : MonoBehaviour
         animator.SetFloat("speedy", body.velocity.y);
 
         if (IsPushing() && spd > 0.01f) {
+            playerSfx.PlayShoveBox();
             animator.SetBool("pushing", true);
             render.localPosition = new Vector2(-0.6f, -0.1f);
         } else {
@@ -130,7 +131,7 @@ public class Player : MonoBehaviour
         return hit.collider != null;
     }
 
-    public bool IsWalking() {
+    public bool IsMovingGrounded() {
         if (body.velocity.x > 0.1f || body.velocity.x < -0.1f) {
             return isGrounded;
         }
