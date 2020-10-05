@@ -32,6 +32,10 @@ public class MapHandler : MonoBehaviour
 	public GameObject BG3;
 	public GameObject BG4;
 	public GameObject BG5;
+	public GameObject BG6;
+	public GameObject BG7;
+	public GameObject BG8;
+	public GameObject BG9;
 
 	public const int map_width = 39;
 	public const int map_height = 21;
@@ -268,6 +272,22 @@ public class MapHandler : MonoBehaviour
 						break;
 
 					case "BG5":
+						prefab = BG5;
+						break;
+
+					case "BG6":
+						prefab = BG5;
+						break;
+
+					case "BG7":
+						prefab = BG5;
+						break;
+
+					case "BG8":
+						prefab = BG5;
+						break;
+
+					case "BG9":
 						prefab = BG5;
 						break;
 
