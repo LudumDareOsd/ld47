@@ -314,7 +314,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -541,7 +541,7 @@ MonoBehaviour:
   typeWriterDelay: 0.1
   storyText: Oh, here again! How do i get out of this loop?
   ostAudioSource: {fileID: 1781890728}
-  currentMap: 4
+  currentMap: 9
   maxMap: 9
 --- !u!82 &1781890728
 AudioSource:

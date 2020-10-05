@@ -19,5 +19,5 @@
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ! 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 Z
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-# Peace at last
-* BG1
+# The fountain! Why... Why did i seek it? ... ... I should continue my quest.
+* BG9

@@ -276,19 +276,19 @@ public class MapHandler : MonoBehaviour
 						break;
 
 					case "BG6":
-						prefab = BG5;
+						prefab = BG6;
 						break;
 
 					case "BG7":
-						prefab = BG5;
+						prefab = BG7;
 						break;
 
 					case "BG8":
-						prefab = BG5;
+						prefab = BG8;
 						break;
 
 					case "BG9":
-						prefab = BG5;
+						prefab = BG9;
 						break;
 
 					default:

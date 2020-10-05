@@ -20,4 +20,4 @@
 X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 B 0 0 0 H 0 0 0 0 0 0 0 0 0 0 2 1 0 0 D 0 0 0 Z
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1
 # This place... It feels familiar. That pressure plate will need more force.
-* BG1
+* BG2

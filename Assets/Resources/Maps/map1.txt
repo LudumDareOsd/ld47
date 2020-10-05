@@ -20,4 +20,4 @@
 1 X 0 0 0 0 0 0 0 0 0 0 B 0 0 0 0 0 0 0 0 P 0 0 0 0 0 0 0 0 0 0 0 0 D 0 0 0 Z
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 # How long has it been... A year? A hundred? Is this the right way...    Will i finally be free from this monotonous existence...
-* BG3
+* BG1
