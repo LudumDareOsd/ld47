@@ -473,8 +473,12 @@ MonoBehaviour:
   BG1: {fileID: 3414824838749681433, guid: d5f7bd0056d06454d983c2c214e19429, type: 3}
   BG2: {fileID: 7815939823009003865, guid: c0fdabcddfddefc4f96e1a5a8d26afd7, type: 3}
   BG3: {fileID: 7815939823009003865, guid: 01ddfddc46f188b469e6a75a32da6735, type: 3}
-  BG4: {fileID: 0}
-  BG5: {fileID: 0}
+  BG4: {fileID: 2069608849330267170, guid: eb7f2c95886b70b49acebabf2fd186bb, type: 3}
+  BG5: {fileID: 9182626106693879393, guid: b001bb1686430e24e883bccb70f35610, type: 3}
+  BG6: {fileID: 6245317465571170452, guid: dbd6ad1fa5688194fa827230d1285b0f, type: 3}
+  BG7: {fileID: 9069906149714877270, guid: 7ed7bf301c1d94b4ea9bfc1da73df678, type: 3}
+  BG8: {fileID: 7025390286078281877, guid: 4c4adac5d2d2fc24190361b04dfea149, type: 3}
+  BG9: {fileID: 2019171003257967205, guid: 2a0875f86f3ed584cb69b641f8626426, type: 3}
   levelController: {fileID: 1781890725}
 --- !u!4 &1771147140
 Transform:
