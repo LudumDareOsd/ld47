@@ -9,7 +9,7 @@ public class LevelController : MonoBehaviour
     public string storyText = "";
     public AudioSource ostAudioSource;
 	public int currentMap = 1;
-    public int maxMap = 10;
+    public int maxMap = 9;
 	private bool loadPrevious = false;
     private Image headerImage;
     private Text headerText;
@@ -57,8 +57,8 @@ public class LevelController : MonoBehaviour
     {
         currentMap++;
 
-        if (currentMap > maxMap) {
-            currentMap = 0;
+        if (currentMap >= maxMap) {
+            currentMap = 1;
         }
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

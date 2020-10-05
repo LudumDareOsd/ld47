@@ -472,7 +472,7 @@ MonoBehaviour:
     type: 3}
   BG1: {fileID: 3414824838749681433, guid: d5f7bd0056d06454d983c2c214e19429, type: 3}
   BG2: {fileID: 7815939823009003865, guid: c0fdabcddfddefc4f96e1a5a8d26afd7, type: 3}
-  BG3: {fileID: 0}
+  BG3: {fileID: 7815939823009003865, guid: 01ddfddc46f188b469e6a75a32da6735, type: 3}
   BG4: {fileID: 0}
   BG5: {fileID: 0}
   levelController: {fileID: 1781890725}
@@ -538,7 +538,7 @@ MonoBehaviour:
   storyText: Oh, here again! How do i get out of this loop?
   ostAudioSource: {fileID: 1781890728}
   currentMap: 1
-  maxMap: 10
+  maxMap: 9
 --- !u!82 &1781890728
 AudioSource:
   m_ObjectHideFlags: 0
