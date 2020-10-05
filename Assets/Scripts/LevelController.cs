@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class LevelController : MonoBehaviour
 {
@@ -12,13 +13,16 @@ public class LevelController : MonoBehaviour
     public int maxMap = 9;
 	private bool loadPrevious = false;
     private Image headerImage;
-	private Text instructionsText;
 	private Text headerText;
+	private Text instructionsText;
+	private Text timerText;
 
-    private bool playerHasMoved = false;
+	private bool playerHasMoved = false;
     private bool textIsFinished = false;
     private Canvas storyCanvas;
     private GameObject mapHandler;
+
+	private float time;
 
     public void Awake()
     {
@@ -39,7 +43,7 @@ public class LevelController : MonoBehaviour
     {
         ostAudioSource.loop = true;
         ostAudioSource.Play();
-    }
+	}
 
     public void Update()
     {
@@ -49,7 +53,12 @@ public class LevelController : MonoBehaviour
         {
             StartCoroutine(FadeOutStoryText());
         }
-    }
+
+		time += Time.deltaTime;
+		var ts = TimeSpan.FromSeconds(time);
+		timerText.text = ts.ToString(@"mm\:ss\:ff");
+
+	}
 
     public void Reload() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -74,6 +83,7 @@ public class LevelController : MonoBehaviour
         headerImage = storyCanvas.GetComponentInChildren<Image>();
         headerText = storyCanvas.GetComponentInChildren<Text>();
 		instructionsText = GameObject.Find("Instructions").GetComponentInChildren<Text>();
+		timerText = GameObject.Find("Timer").GetComponent<Text>();
 
 		var mh = mapHandler.GetComponent<MapHandler>();
         mh.levelController = gameObject;
