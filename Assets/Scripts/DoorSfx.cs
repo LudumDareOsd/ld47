@@ -7,6 +7,9 @@ public class DoorSfx : MonoBehaviour
     public AudioSource doorAudioSource;
     public AudioClip openDoorClip;
     public AudioClip closeDoorClip;
+    private void Awake()
+    {
+    }
     public void StopDoorAudioIfPlaying()
     {
         if (doorAudioSource.isPlaying)
@@ -17,12 +20,14 @@ public class DoorSfx : MonoBehaviour
     public void PlayCloseDoor()
     {
         StopDoorAudioIfPlaying();
+        doorAudioSource.volume = 0.1f;
         doorAudioSource.clip = closeDoorClip;
         doorAudioSource.Play();
     }
     public void PlayOpenDoor()
     {
         StopDoorAudioIfPlaying();
+        doorAudioSource.volume = 0.4f;
         doorAudioSource.clip = openDoorClip;
         doorAudioSource.Play();
     }
