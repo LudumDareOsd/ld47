@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
 {
-    public float typeWriterDelay = 0.1f;
+    public float typeWriterDelay = 0.05f;
     public string storyText = "";
     public AudioSource ostAudioSource;
 	public int currentMap = 1;
@@ -130,7 +130,7 @@ public class LevelController : MonoBehaviour
         }
         else
         {
-            return storyText.Substring(i - 1, 1).IndexOfAny(new char[] { '?', '!', '.', ',' }) != -1 ? 1 : typeWriterDelay;
+            return storyText.Substring(i - 1, 1).IndexOfAny(new char[] { '?', '!', '.', ',' }) != -1 ? 0.2f : typeWriterDelay;
         }
     }
 
