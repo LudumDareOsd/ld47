@@ -12,7 +12,9 @@ public class LevelController : MonoBehaviour
     public int maxMap = 9;
 	private bool loadPrevious = false;
     private Image headerImage;
-    private Text headerText;
+	private Text instructionsText;
+	private Text headerText;
+
     private bool playerHasMoved = false;
     private bool textIsFinished = false;
     private Canvas storyCanvas;
@@ -71,8 +73,9 @@ public class LevelController : MonoBehaviour
 
         headerImage = storyCanvas.GetComponentInChildren<Image>();
         headerText = storyCanvas.GetComponentInChildren<Text>();
+		instructionsText = GameObject.Find("Instructions").GetComponentInChildren<Text>();
 
-        var mh = mapHandler.GetComponent<MapHandler>();
+		var mh = mapHandler.GetComponent<MapHandler>();
         mh.levelController = gameObject;
         mh.LoadMap(currentMap, loadPrevious);
 
@@ -140,8 +143,9 @@ public class LevelController : MonoBehaviour
         {
             headerImage.color = new Color(1, 1, 1, i);
             headerText.color = new Color(255, 255, 255, i);
+			instructionsText.color = new Color(255, 255, 255, i);
 
-            yield return null;
+			yield return null;
         }
 
         StartCoroutine(ShowText());
@@ -153,7 +157,9 @@ public class LevelController : MonoBehaviour
         {
             headerImage.color = new Color(1, 1, 1, i);
             headerText.color = new Color(255, 255, 255, i);
-            yield return null;
+			instructionsText.color = new Color(255, 255, 255, i);
+
+			yield return null;
         }
     }
 }
